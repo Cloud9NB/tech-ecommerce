@@ -1,5 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import '../css/TopNav.css';
 
 const TopNav = () => {
   return (

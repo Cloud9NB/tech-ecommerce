@@ -1,0 +1,14 @@
+.home__banner {
+  width: 100%;
+}
+
+.seeMore {
+  text-align: right;
+  display: block;
+  text-decoration: none;
+}
+
+.sale__banner--container > img {
+  width: 100%;
+  padding: 30px;
+}
