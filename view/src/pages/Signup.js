@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import '../css/pages/Signup.css';
 
 const Signup = () => {
   const [signup, setSignup] = useState({
@@ -19,8 +20,8 @@ const Signup = () => {
   return (
     <Container>
       <Row>
-        <Col md={6} className='signup__form'>
-          <Form>
+        <Col md={6} className='signup__form--container'>
+          <Form onSubmit={handleSubmit} className='signup__form'>
             <h1>Create an account</h1>
             <Form.Group>
               <Form.Label>Email Address</Form.Label>
@@ -34,7 +35,7 @@ const Signup = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='mb-3'>
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type='password'
@@ -47,15 +48,16 @@ const Signup = () => {
             </Form.Group>
 
             <Form.Group>
-              <Button type='submit' onClick={handleSubmit}>
-                Signup
-              </Button>
+              <Button type='submit'>Signup</Button>
             </Form.Group>
+
             <p>
               Have an account? <Link to='/login'>Login</Link>
             </p>
           </Form>
         </Col>
+
+        <Col md={6} className='signup__image'></Col>
       </Row>
     </Container>
   );

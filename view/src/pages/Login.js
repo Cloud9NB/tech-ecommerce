@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import '../css/pages/Login.css';
 
 const Login = () => {
   const [login, setLogin] = useState({
@@ -19,8 +20,8 @@ const Login = () => {
   return (
     <Container>
       <Row>
-        <Col md={6} className='login__form'>
-          <Form>
+        <Col md={6} className='login__form--container'>
+          <Form onSubmit={handleSubmit} className='login__form'>
             <h1>Login to your account</h1>
             <Form.Group>
               <Form.Label>Email Address</Form.Label>
@@ -34,7 +35,7 @@ const Login = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='mb-3'>
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type='password'
@@ -47,15 +48,16 @@ const Login = () => {
             </Form.Group>
 
             <Form.Group>
-              <Button type='submit' onClick={handleSubmit}>
-                Login
-              </Button>
+              <Button type='submit'>Login</Button>
             </Form.Group>
+
             <p>
               Don't have an account? <Link to='/signup'>Create an account</Link>
             </p>
           </Form>
         </Col>
+
+        <Col md={6} className='login__image'></Col>
       </Row>
     </Container>
   );
