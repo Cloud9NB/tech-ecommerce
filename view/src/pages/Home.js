@@ -1,4 +1,3 @@
-// import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import HomeCategories from '../components/home/HomeCategories';
 import '../css/pages/Home.css';
