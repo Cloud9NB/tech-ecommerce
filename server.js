@@ -17,6 +17,9 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const users = require('./routes/userRoutes');
+app.use('/users', users);
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'view/build')));
 
