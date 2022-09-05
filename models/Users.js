@@ -71,7 +71,7 @@ UserSchema.statics.findByCredentials = async function (email, password) {
 // deletes the password out of the object then it returns to front end
 UserSchema.methods.toJSON = function () {
   const user = this;
-  const userObject = user.toObject;
+  const userObject = user.toObject();
   delete userObject.password;
 
   return userObject;

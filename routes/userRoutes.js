@@ -15,8 +15,6 @@ router.post('/signup', async (req, res) => {
 
   try {
     const user = await User.create({ name, email, password });
-    console.log(user);
-
     res.json(user);
   } catch (error) {
     if (error.code === 11000) {
