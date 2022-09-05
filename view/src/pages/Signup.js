@@ -1,20 +1,26 @@
 import { useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/pages/Signup.css';
+import { useSignupMutation } from '../services/appApi';
 
 const Signup = () => {
-  const [signup, setSignup] = useState({
+  const [account, setAccount] = useState({
+    name: '',
     email: '',
     password: '',
   });
 
+  const [signup, { error, isLoading, isError }] = useSignupMutation();
+
   const handleChange = e => {
-    setSignup(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setAccount(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = e => {
+    const { name, email, password } = account;
     e.preventDefault();
+    signup({ name, email, password });
   };
 
   return (
@@ -23,13 +29,26 @@ const Signup = () => {
         <Col md={6} className='signup__form--container'>
           <Form onSubmit={handleSubmit} className='signup__form'>
             <h1>Create an account</h1>
+            {isError && <Alert variant='danger'>{error.data}</Alert>}
+            <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type='text'
+                name='name'
+                placeholder='Enter name'
+                value={account.name}
+                onChange={handleChange}
+                required
+              ></Form.Control>
+            </Form.Group>
+
             <Form.Group>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type='email'
                 name='email'
                 placeholder='Enter Email'
-                value={signup.email}
+                value={account.email}
                 onChange={handleChange}
                 required
               ></Form.Control>
@@ -41,14 +60,16 @@ const Signup = () => {
                 type='password'
                 name='password'
                 placeholder='Enter Password'
-                value={signup.password}
+                value={account.password}
                 onChange={handleChange}
                 required
               ></Form.Control>
             </Form.Group>
 
             <Form.Group>
-              <Button type='submit'>Signup</Button>
+              <Button type='submit' disabled={isLoading}>
+                Signup
+              </Button>
             </Form.Group>
 
             <p>
