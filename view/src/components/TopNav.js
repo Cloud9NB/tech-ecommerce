@@ -3,6 +3,8 @@ import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/components/TopNav.css';
 import { logout } from '../features/userSlice';
+// import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const TopNav = () => {
   const user = useSelector(({ user }) => user);
@@ -16,11 +18,18 @@ const TopNav = () => {
   return (
     <Navbar bg='light' expand='lg'>
       <Container>
-        <Navbar.Brand href='/'>Tech Shop</Navbar.Brand>
+        <LinkContainer to=''>
+          <Navbar.Brand>Tech Shop</Navbar.Brand>
+        </LinkContainer>
+
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
-            {!user && <Nav.Link href='/login'>Login</Nav.Link>}
+            {!user && (
+              <LinkContainer to='/login'>
+                <Nav.Link>Login</Nav.Link>
+              </LinkContainer>
+            )}
 
             {user && (
               <NavDropdown title={user.email} id='basic-nav-dropdown'>
