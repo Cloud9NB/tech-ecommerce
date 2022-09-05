@@ -1,8 +1,18 @@
 import Container from 'react-bootstrap/Container';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import '../css/TopNav.css';
+import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import '../css/components/TopNav.css';
+import { logout } from '../features/userSlice';
 
 const TopNav = () => {
+  const user = useSelector(({ user }) => user);
+  const dispatch = useDispatch();
+
+  const handleLogout = e => {
+    e.preventDefault();
+    dispatch(logout());
+  };
+
   return (
     <Navbar bg='light' expand='lg'>
       <Container>
@@ -10,19 +20,40 @@ const TopNav = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
-            <Nav.Link href='/login'>Login</Nav.Link>
-            {/* <Nav.Link href='#link'>Link</Nav.Link> */}
-            <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-              <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.2'>
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            {!user && <Nav.Link href='/login'>Login</Nav.Link>}
+
+            {user && (
+              <NavDropdown title={user.email} id='basic-nav-dropdown'>
+                {user.admin ? (
+                  <>
+                    <NavDropdown.Item href='/dashboard'>
+                      Dashboard
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href='/new-product'>
+                      Create Product
+                    </NavDropdown.Item>
+                  </>
+                ) : (
+                  <>
+                    <NavDropdown.Item href='/cart'>Cart</NavDropdown.Item>
+                    <NavDropdown.Item href='/orders'>
+                      My Orders
+                    </NavDropdown.Item>
+                  </>
+                )}
+
+                <NavDropdown.Divider />
+                <NavDropdown.Item href='#action/3.4'>
+                  <Button
+                    variant='danger'
+                    className='logout-btn'
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
