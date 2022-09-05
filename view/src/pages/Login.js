@@ -1,20 +1,24 @@
 import { useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/pages/Login.css';
+import { useLoginMutation } from '../services/appApi';
 
 const Login = () => {
-  const [login, setLogin] = useState({
+  const [account, setAccount] = useState({
     email: '',
     password: '',
   });
 
   const handleChange = e => {
-    setLogin(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setAccount(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const [login, { error, isError, isLoading }] = useLoginMutation();
 
   const handleSubmit = e => {
     e.preventDefault();
+    login(account);
   };
 
   return (
@@ -23,13 +27,14 @@ const Login = () => {
         <Col md={6} className='login__form--container'>
           <Form onSubmit={handleSubmit} className='login__form'>
             <h1>Login to your account</h1>
+            {isError && <Alert variant='danger'>{error.data}</Alert>}
             <Form.Group>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type='email'
                 name='email'
                 placeholder='Enter Email'
-                value={login.email}
+                value={account.email}
                 onChange={handleChange}
                 required
               ></Form.Control>
@@ -41,14 +46,16 @@ const Login = () => {
                 type='password'
                 name='password'
                 placeholder='Enter Password'
-                value={login.password}
+                value={account.password}
                 onChange={handleChange}
                 required
               ></Form.Control>
             </Form.Group>
 
             <Form.Group>
-              <Button type='submit'>Login</Button>
+              <Button type='submit' disabled={isLoading}>
+                Login
+              </Button>
             </Form.Group>
 
             <p>

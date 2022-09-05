@@ -18,9 +18,8 @@ const Signup = () => {
   };
 
   const handleSubmit = e => {
-    const { name, email, password } = account;
     e.preventDefault();
-    signup({ name, email, password });
+    signup(account);
   };
 
   return (
