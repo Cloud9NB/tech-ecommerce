@@ -3,7 +3,6 @@ import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/components/TopNav.css';
 import { logout } from '../features/userSlice';
-// import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const TopNav = () => {
