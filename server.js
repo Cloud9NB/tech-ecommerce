@@ -18,7 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const users = require('./routes/userRoutes');
+const products = require('./routes/productRoutes');
 app.use('/users', users);
+app.use('/products', products);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'view/build')));

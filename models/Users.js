@@ -116,6 +116,7 @@ UserSchema.pre('save', function (next) {
     bcrypt.hash(user.password, salt, function (error, hash) {
       if (error) return next(error);
       user.password = hash;
+      user.passwordVerify = hash;
       next();
     });
   });
