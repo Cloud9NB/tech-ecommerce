@@ -31,7 +31,7 @@ const Signup = () => {
           <Form onSubmit={handleSubmit} className='signup__form'>
             <h1>Create an account</h1>
             {isError && <Alert variant='danger'>{error.data}</Alert>}
-            <Form.Group>
+            <Form.Group className='mb-3'>
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type='text'
@@ -43,7 +43,7 @@ const Signup = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='mb-3'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type='email'
@@ -55,7 +55,7 @@ const Signup = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group>
+            <Form.Group className='mb-3'>
               <Form.Label>Re-Email Address</Form.Label>
               <Form.Control
                 type='email'
