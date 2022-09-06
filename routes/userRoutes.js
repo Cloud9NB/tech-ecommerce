@@ -11,10 +11,16 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, passwordVerify, emailVerify } = req.body;
 
   try {
-    const user = await User.create({ name, email, password });
+    const user = await User.create({
+      name,
+      email,
+      password,
+      passwordVerify,
+      emailVerify,
+    });
     res.json(user);
   } catch (error) {
     if (error.code === 11000) {

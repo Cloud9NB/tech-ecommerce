@@ -9,6 +9,8 @@ const Signup = () => {
     name: '',
     email: '',
     password: '',
+    emailVerify: '',
+    passwordVerify: '',
   });
 
   const [signup, { error, isLoading, isError }] = useSignupMutation();
@@ -53,6 +55,18 @@ const Signup = () => {
               ></Form.Control>
             </Form.Group>
 
+            <Form.Group>
+              <Form.Label>Re-Email Address</Form.Label>
+              <Form.Control
+                type='email'
+                name='emailVerify'
+                placeholder='Re-Enter Email'
+                value={account.emailVerify}
+                onChange={handleChange}
+                required
+              ></Form.Control>
+            </Form.Group>
+
             <Form.Group className='mb-3'>
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -60,6 +74,18 @@ const Signup = () => {
                 name='password'
                 placeholder='Enter Password'
                 value={account.password}
+                onChange={handleChange}
+                required
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group className='mb-3'>
+              <Form.Label>Re-Password</Form.Label>
+              <Form.Control
+                type='password'
+                name='passwordVerify'
+                placeholder='Re-Enter Password'
+                value={account.passwordVerify}
                 onChange={handleChange}
                 required
               ></Form.Control>

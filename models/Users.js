@@ -21,7 +21,25 @@ const UserSchema = new mongoose.Schema(
       },
     },
 
+    emailVerify: {
+      type: String,
+      required: [true, 'is required'],
+      unique: true,
+      index: true,
+      validate: {
+        validator: string => {
+          return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(string);
+        },
+        message: props => `${props.value} is not a valid email`,
+      },
+    },
+
     password: {
+      type: String,
+      required: [true, 'is required'],
+    },
+
+    passwordVerify: {
       type: String,
       required: [true, 'is required'],
     },
@@ -52,17 +70,15 @@ const UserSchema = new mongoose.Schema(
     ],
   },
 
-  {
-    minimize: false,
-  }
+  { minimize: false }
 );
 
-// catches error when loggin in logging in with wrong email or wrong password
+// catches error when logging in logging in with wrong email or wrong password
 UserSchema.statics.findByCredentials = async function (email, password) {
   const user = await User.findOne({ email });
-  if (!user) throw new Error('Invalid credentials');
-
   const isSamePassword = bcrypt.compareSync(password, user.password);
+
+  if (!user) throw new Error('Invalid credentials');
   if (isSamePassword) return user;
 
   throw new Error('Invalid credentials');
@@ -73,21 +89,32 @@ UserSchema.methods.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
   delete userObject.password;
+  delete userObject.passwordVerify;
+  delete userObject.emailVerify;
 
   return userObject;
 };
 
-//before saving it hashes the password
+//before saving it validates then hashes the password
 UserSchema.pre('save', function (next) {
   const user = this;
+  // This regex must contain 1 upper and lower case letter, 1 number, 1 special characters, minimum 8 length
+  const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
   if (!user.isModified('password')) return next();
+  if (!isNaN(user.name)) throw new Error('Name must not contain any numbers');
+  if (user.email !== user.emailVerify) throw new Error('Email does not match');
+  if (!passwordRegex.test(user.password))
+    throw new Error(
+      'Password must contain 1 upper and lower case letter, a number, a special character and minimum 8 characters'
+    );
+  if (user.password !== user.passwordVerify)
+    throw new Error('Password does not match');
 
   bcrypt.genSalt(10, function (error, salt) {
     if (error) return next(error);
-
     bcrypt.hash(user.password, salt, function (error, hash) {
       if (error) return next(error);
-
       user.password = hash;
       next();
     });
