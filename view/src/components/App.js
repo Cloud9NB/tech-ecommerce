@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import { useSelector } from 'react-redux';
-import NewProduct from '../pages/NewProduct';
+import NewProduct from '../pages/admin/createProduct/NewProduct';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
