@@ -28,7 +28,7 @@ const Login = () => {
           <Form onSubmit={handleSubmit} className='login__form'>
             <h1>Login to your account</h1>
             {isError && <Alert variant='danger'>{error.data}</Alert>}
-            <Form.Group>
+            <Form.Group className='mb-3'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type='email'
