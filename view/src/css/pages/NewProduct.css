@@ -1,0 +1,17 @@
+.new-product__form--description {
+  height: 100px;
+}
+
+.images-preview-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100px, 100%), 1fr));
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.new-product__image--container {
+  background-image: url(https://images.unsplash.com/photo-1652773899966-583e9d2f2fb0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fHRlY2h8ZW58MHwxfDB8d2hpdGV8&auto=format&fit=crop&w=800&q=60);
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+}
