@@ -1,4 +1,4 @@
-import '../../../css/components/NewProductImages.css';
+import '../../../css/components/admin/NewProductImages.css';
 
 const NewProductImages = ({ image, images, setProduct }) => {
   const handleRemoveImage = imgObj => {

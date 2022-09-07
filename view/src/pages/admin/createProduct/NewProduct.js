@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCreateProductMutation } from '../../../services/appApi';
-import '../../../css/pages/NewProduct.css';
+import '../../../css/pages/admin/NewProduct.css';
 import NewProductImages from '../../../components/admin/createProduct/NewProductImages';
 
 const NewProduct = () => {
