@@ -28,8 +28,8 @@ const NewProduct = () => {
     if (!product.images.length) {
       return alert('Please fill out all fields');
     }
+
     createProduct(product).then(res => {
-      console.log(res);
       if (res.data.length > 0) {
         setTimeout(() => navigate('/'), 2500);
       }
