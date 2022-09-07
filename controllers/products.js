@@ -13,13 +13,13 @@ module.exports = {
 
   createProduct: async (req, res) => {
     try {
-      const { name, description, price, category, pictures } = req.body;
+      const { name, description, price, category, images } = req.body;
       const product = await Product.create({
         name,
         description,
         price,
         category,
-        pictures,
+        images,
       });
       const products = await Product.find();
 
@@ -33,13 +33,13 @@ module.exports = {
     const { id } = req.params;
 
     try {
-      const { name, description, price, category, pictures } = req.body;
+      const { name, description, price, category, images } = req.body;
       const product = await Product.findByIdAndUpdate(id, {
         name,
         description,
         price,
         category,
-        pictures,
+        images,
       });
       const products = await Product.find();
       res.status(200).json(products);
