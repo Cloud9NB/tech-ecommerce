@@ -1,0 +1,17 @@
+.product-preview__link {
+  cursor: pointer;
+  width: 13rem;
+  margin: 5px;
+}
+
+.product-preview__card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.product-preview__img {
+  height: 150px;
+  object-fit: cover;
+}
