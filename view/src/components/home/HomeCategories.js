@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../../css/components/HomeCategories.css';
+import '../../css/components/home/HomeCategories.css';
 
 const HomeCategories = ({ name, img }) => {
   return (
