@@ -1,8 +1,21 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { updateProducts } from '../features/productSlice';
+import axios from 'axios';
 import HomeCategories from '../components/home/HomeCategories';
+import ProductPreview from '../components/home/ProductPreview';
 import '../css/pages/Home.css';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(({ products }) => products);
+  const lastProducts = products.slice(0, 8);
+
+  useEffect(() => {
+    axios.get('/products').then(({ data }) => dispatch(updateProducts(data)));
+  }, [dispatch]);
+
   const categories = [
     {
       id: 1,
@@ -25,14 +38,17 @@ const Home = () => {
     <HomeCategories key={id} name={name} img={img} />
   ));
 
+  const productPreview = lastProducts.map(product => (
+    <ProductPreview key={product._id} {...product} />
+  ));
+
   return (
     <div>
       <img src='/homeBanner.png' alt='home banner' className='home__banner' />
 
       <div className='featured--products__container container mt-4'>
         <h2>Featured Products</h2>
-        {/* Featured Products from backend */}
-
+        <div className='product-preview__container'>{productPreview}</div>
         <div>
           <Link to='/category/all' className='seeMore'>
             See more {'>>'}
