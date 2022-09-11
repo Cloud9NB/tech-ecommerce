@@ -1,0 +1,14 @@
+.product-page__container {
+  position: relative;
+}
+
+.product__carousel--image {
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  display: none;
+}
