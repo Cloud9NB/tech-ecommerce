@@ -11,11 +11,6 @@ import '../css/App.css';
 const App = () => {
   const user = useSelector(({ user }) => user);
 
-  const products = useSelector(({ products }) => products);
-  const productInfoRoute = products.map(({ _id }) => (
-    <Route path={`/product/${_id}`} element={<ProductPage />} />
-  ));
-
   return (
     <div>
       <BrowserRouter>
@@ -28,7 +23,7 @@ const App = () => {
               <Route exact path='/signup' element={<Signup />} />
             </>
           )}
-          {productInfoRoute}
+          <Route path={'/product/:id'} element={<ProductPage />} />
           <Route path='/new-product' element={<NewProduct />} />
           <Route path='*' element={<Home />} />
         </Routes>
