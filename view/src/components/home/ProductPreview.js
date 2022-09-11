@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Badge, Card } from 'react-bootstrap';
 import '../../css/components/home/ProductPreview.css';
