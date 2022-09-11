@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../css/pages/Login.css';
 import { useLoginMutation } from '../services/appApi';
+import '../css/pages/Login.css';
 
 const Login = () => {
   const [account, setAccount] = useState({

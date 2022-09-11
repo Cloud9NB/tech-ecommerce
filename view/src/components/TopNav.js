@@ -1,9 +1,9 @@
-import Container from 'react-bootstrap/Container';
-import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import '../css/components/TopNav.css';
-import { logout } from '../features/userSlice';
+import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { logout } from '../features/userSlice';
+import Container from 'react-bootstrap/Container';
+import '../css/components/TopNav.css';
 
 const TopNav = () => {
   const user = useSelector(({ user }) => user);

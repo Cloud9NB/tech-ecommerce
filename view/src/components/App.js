@@ -1,12 +1,12 @@
-import '../css/App.css';
-import TopNav from './TopNav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import NewProduct from '../pages/admin/createProduct/NewProduct';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
-import { useSelector } from 'react-redux';
-import NewProduct from '../pages/admin/createProduct/NewProduct';
-import ProductPage from '../pages/ProductPage';
+import TopNav from './TopNav';
+import ProductPage from '../pages/home/ProductPage';
+import '../css/App.css';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
