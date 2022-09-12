@@ -1,14 +1,14 @@
 import AliceCarousel from 'react-alice-carousel';
 import SimilarProduct from './SimilarProduct';
 
-const SimilarProducts = ({ product, similar }) => {
+const SimilarProducts = ({ similar }) => {
   let similarProducts = [];
 
   if (similar) {
-    similarProducts = similar.map((similar, index) => {
+    similarProducts = similar.map((sim, index) => {
       return (
-        <div className='item'>
-          <SimilarProduct {...product} />
+        <div className='item' key={index}>
+          <SimilarProduct {...sim} />
         </div>
       );
     });

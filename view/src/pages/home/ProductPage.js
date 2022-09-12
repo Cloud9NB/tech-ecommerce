@@ -16,6 +16,7 @@ const ProductPage = () => {
     product: null,
     similar: null,
   });
+  console.log(state.similar);
   const user = useSelector(({ user }) => user);
   const { id } = useParams();
 
@@ -61,7 +62,7 @@ const ProductPage = () => {
         </Col>
       </Row>
 
-      <SimilarProducts product={state.product} similar={state.similar} />
+      <SimilarProducts similar={state.similar} />
     </Container>
   );
 };

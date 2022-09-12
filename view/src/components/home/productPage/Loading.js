@@ -5,6 +5,8 @@ const Loading = () => {
   return (
     <div className='loading-container'>
       <Spinner animation='grow' />
+      <Spinner animation='grow' />
+      <Spinner animation='grow' />
     </div>
   );
 };
