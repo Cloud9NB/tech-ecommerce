@@ -1,20 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  Badge,
-  Button,
-  ButtonGroup,
-  Col,
-  Container,
-  Form,
-  Row,
-} from 'react-bootstrap';
+import { Badge, Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../components/home/productPage/Loading';
 import SimilarProducts from '../../components/home/productPage/SimilarProducts';
 import ProductImages from '../../components/home/productPage/ProductImages';
+import AddToCart from '../../components/home/productPage/AddToCart';
+import EditProduct from '../../components/home/productPage/EditProduct';
 import '../../css/pages/home/ProductPage.css';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
@@ -55,30 +48,16 @@ const ProductPage = () => {
           <p>
             <Badge bg='primary'>{state.product.category}</Badge>
           </p>
+
           <p className='product__price'>{state.product.price}</p>
+
           <p style={{ textAlign: 'justify' }} className='py-3'>
             <strong>Description:</strong> {state.product.description}
           </p>
-          {customer && (
-            <ButtonGroup style={{ width: '90%' }}>
-              <Form.Select
-                size='lg'
-                style={{ width: '40%', borderRadius: '0' }}
-              >
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-              </Form.Select>
-              <Button size='lg'>Add To Cart</Button>
-            </ButtonGroup>
-          )}
 
-          {admin && (
-            <Link to={`/product/${state.product._id}/edit`}>
-              <Button size='lg'>Edit Product</Button>
-            </Link>
-          )}
+          {customer && <AddToCart />}
+
+          {admin && <EditProduct product={state.product} />}
         </Col>
       </Row>
 
