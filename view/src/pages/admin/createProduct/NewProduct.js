@@ -20,7 +20,12 @@ const NewProduct = () => {
     useCreateProductMutation();
 
   const handleChange = e => {
-    setProduct(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setProduct(prev => {
+      if (e.target.name === 'price') {
+        return { ...prev, [e.target.name]: parseInt(e.target.value) };
+      }
+      return { ...prev, [e.target.name]: e.target.value };
+    });
   };
 
   const handleSubmit = e => {
@@ -43,8 +48,6 @@ const NewProduct = () => {
         uploadPreset: process.env.REACT_APP_UPLOADPRESET,
       },
       (error, result) => {
-        console.log(result.event);
-        console.log(result.info);
         if (!error && result.event === 'success') {
           const newImages = [
             ...product.images,

@@ -16,7 +16,7 @@ const ProductPage = () => {
     product: null,
     similar: null,
   });
-  console.log(state.similar);
+
   const user = useSelector(({ user }) => user);
   const { id } = useParams();
 
