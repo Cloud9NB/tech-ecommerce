@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../components/home/productPage/Loading';
 import Category from '../../components/home/categoryPage/Category';
+import '../../css/pages/home/CategoryPage.css';
 
 const CategoryPage = () => {
   const [state, setState] = useState({
