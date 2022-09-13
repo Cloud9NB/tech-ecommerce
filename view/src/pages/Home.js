@@ -19,16 +19,21 @@ const Home = () => {
   const categories = [
     {
       id: 1,
+      name: 'technology',
+      img: 'https://media.istockphoto.com/photos/businessman-using-a-computer-to-document-management-concept-online-picture-id1335050732?b=1&k=20&m=1335050732&s=170667a&w=0&h=ZixERs8xGjy-XF8vYmf60sBwEwE-p3omcoffv8PWMBQ=',
+    },
+    {
+      id: 2,
       name: 'consoles',
       img: 'https://gmedia.playstation.com/is/image/SIEPDC/playstation-5-horizontal-product-shot-01-ps5-en-29sep21?$native--t$',
     },
     {
-      id: 2,
+      id: 3,
       name: 'phones',
       img: 'https://www.powerplanetonline.com/cdnassets/iphone_13_pro_max_verde_alpino_01_l.jpg',
     },
     {
-      id: 3,
+      id: 4,
       name: 'laptops',
       img: 'https://techcrunch.com/wp-content/uploads/2022/07/CMC_1580.jpg',
     },
