@@ -11,7 +11,7 @@ const ProductPreview = ({ _id, name, category, images }) => {
           className='product-preview__img'
           src={images[0].url}
         />
-        <Card.Body>
+        <Card.Body className='text-center'>
           <Card.Title>{name}</Card.Title>
           <Badge bg='warning' text='dark'>
             {category}
