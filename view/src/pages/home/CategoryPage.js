@@ -10,6 +10,7 @@ const CategoryPage = () => {
     isLoading: false,
     searchTerm: '',
   });
+
   const { category } = useParams();
 
   useEffect(() => {
@@ -34,6 +35,18 @@ const CategoryPage = () => {
   const handleChange = e =>
     setState(prev => ({ ...prev, searchTerm: e.target.value }));
 
+  const productsSearch = state.products.filter(product =>
+    product.name.toLowerCase().includes(state.searchTerm.toLowerCase())
+  );
+
+  const noProducts = productsSearch.length === 0;
+
+  const products = noProducts ? (
+    <h1 className='text-center'>No products to show</h1>
+  ) : (
+    <Category productsSearch={productsSearch} />
+  );
+
   return (
     <div className='category-page__container'>
       <div
@@ -50,6 +63,8 @@ const CategoryPage = () => {
           onChange={handleChange}
         />
       </div>
+
+      {products}
     </div>
   );
 };
