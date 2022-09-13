@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSignupMutation } from '../services/appApi';
 import '../css/pages/Signup.css';
 
@@ -9,7 +9,6 @@ const Signup = () => {
     name: '',
     email: '',
     password: '',
-    emailVerify: '',
     passwordVerify: '',
   });
 
@@ -19,9 +18,13 @@ const Signup = () => {
     setAccount(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = e => {
     e.preventDefault();
-    signup(account);
+    signup(account).then(({ data }) => {
+      if (data) navigate('/');
+    });
   };
 
   return (
@@ -50,18 +53,6 @@ const Signup = () => {
                 name='email'
                 placeholder='Enter Email'
                 value={account.email}
-                onChange={handleChange}
-                required
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group className='mb-3'>
-              <Form.Label>Re-Email Address</Form.Label>
-              <Form.Control
-                type='email'
-                name='emailVerify'
-                placeholder='Re-Enter Email'
-                value={account.emailVerify}
                 onChange={handleChange}
                 required
               ></Form.Control>

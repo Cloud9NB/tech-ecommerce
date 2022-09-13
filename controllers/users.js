@@ -11,7 +11,7 @@ module.exports = {
   },
 
   signup: async (req, res) => {
-    const { name, email, password, passwordVerify, emailVerify } = req.body;
+    const { name, email, password, passwordVerify } = req.body;
 
     try {
       const user = await User.create({
@@ -19,7 +19,6 @@ module.exports = {
         email,
         password,
         passwordVerify,
-        emailVerify,
       });
       res.status(201).json(user);
     } catch (error) {

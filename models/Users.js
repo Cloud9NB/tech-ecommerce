@@ -21,19 +21,6 @@ const UserSchema = new mongoose.Schema(
       },
     },
 
-    emailVerify: {
-      type: String,
-      required: [true, 'is required'],
-      unique: true,
-      index: true,
-      validate: {
-        validator: string => {
-          return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(string);
-        },
-        message: props => `${props.value} is not a valid email`,
-      },
-    },
-
     password: {
       type: String,
       required: [true, 'is required'],
@@ -90,7 +77,6 @@ UserSchema.methods.toJSON = function () {
   const userObject = user.toObject();
   delete userObject.password;
   delete userObject.passwordVerify;
-  delete userObject.emailVerify;
 
   return userObject;
 };
@@ -103,7 +89,6 @@ UserSchema.pre('save', function (next) {
 
   if (!user.isModified('password')) return next();
   if (!isNaN(user.name)) throw new Error('Name must not contain any numbers');
-  if (user.email !== user.emailVerify) throw new Error('Email does not match');
   if (!passwordRegex.test(user.password))
     throw new Error(
       'Password must contain 1 upper and lower case letter, a number, a special character and minimum 8 characters'
