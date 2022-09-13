@@ -1,5 +1,5 @@
 import AliceCarousel from 'react-alice-carousel';
-import SimilarProduct from './SimilarProduct';
+import ProductPreview from '../ProductPreview';
 
 const SimilarProducts = ({ similar }) => {
   let similarProducts = [];
@@ -7,8 +7,11 @@ const SimilarProducts = ({ similar }) => {
   if (similar) {
     similarProducts = similar.map((sim, index) => {
       return (
-        <div className='item' key={index}>
-          <SimilarProduct {...sim} />
+        <div
+          className='item d-flex justify-content-center align-items-center flex-wrap'
+          key={index}
+        >
+          <ProductPreview {...sim} />
         </div>
       );
     });
