@@ -6,6 +6,7 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import TopNav from './TopNav';
 import ProductPage from '../pages/home/ProductPage';
+import CategoryPage from '../pages/home/CategoryPage';
 import '../css/App.css';
 
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
           )}
           <Route path={'/product/:id'} element={<ProductPage />} />
           <Route path='/new-product' element={<NewProduct />} />
+          <Route path='/category/:category' element={<CategoryPage />} />
+
           <Route path='*' element={<Home />} />
         </Routes>
       </BrowserRouter>
