@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../services/appApi';
 import '../css/pages/Login.css';
 
@@ -16,9 +16,13 @@ const Login = () => {
 
   const [login, { error, isError, isLoading }] = useLoginMutation();
 
+  const navigate = useNavigate();
+
   const handleSubmit = e => {
     e.preventDefault();
-    login(account);
+    login(account).then(({ data }) => {
+      if (data) navigate('/');
+    });
   };
 
   return (
