@@ -80,7 +80,7 @@ module.exports = {
 
   getProductByCategory: async (req, res) => {
     const { category } = req.params;
-    console.log(req.params);
+
     try {
       let products;
 
@@ -89,6 +89,7 @@ module.exports = {
       } else {
         products = await Product.find({ category });
       }
+
       res.status(200).json(products);
     } catch (error) {
       res.status(400).json(error.message);
