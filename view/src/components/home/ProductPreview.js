@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import { Badge, Card } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import '../../css/components/home/ProductPreview.css';
 
 const ProductPreview = ({ _id, name, category, images }) => {
   return (
-    <Link to={`/product/${_id}`} className='product-preview__link'>
+    <LinkContainer to={`/product/${_id}`} className='product-preview__link'>
       <Card className='product-preview__card'>
         <Card.Img
           variant='top'
@@ -18,7 +18,7 @@ const ProductPreview = ({ _id, name, category, images }) => {
           </Badge>
         </Card.Body>
       </Card>
-    </Link>
+    </LinkContainer>
   );
 };
 
