@@ -64,7 +64,7 @@ module.exports = {
     }
   },
 
-  getProductByCategory: async (req, res) => {
+  getProductByProductId: async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -73,6 +73,23 @@ module.exports = {
         5
       );
       res.status(200).json({ product, similar });
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  },
+
+  getProductByCategory: async (req, res) => {
+    const { category } = req.params;
+    console.log(req.params);
+    try {
+      let products;
+
+      if (category === 'all') {
+        products = await Product.find().sort([['date', -1]]);
+      } else {
+        products = await Product.find({ category });
+      }
+      res.status(200).json(products);
     } catch (error) {
       res.status(400).json(error.message);
     }
