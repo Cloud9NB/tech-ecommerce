@@ -9,7 +9,7 @@ const NewProduct = () => {
   const [product, setProduct] = useState({
     name: '',
     description: '',
-    price: '',
+    price: 0,
     category: '',
     images: [],
   });
@@ -22,7 +22,7 @@ const NewProduct = () => {
   const handleChange = e => {
     setProduct(prev => {
       if (e.target.name === 'price') {
-        return { ...prev, [e.target.name]: parseInt(e.target.value) };
+        return { ...prev, [e.target.name]: parseFloat(e.target.value) };
       }
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -116,6 +116,8 @@ const NewProduct = () => {
               <Form.Control
                 type='number'
                 name='price'
+                min='0'
+                step='.01'
                 placeholder='Product Price'
                 value={product.price}
                 onChange={handleChange}
