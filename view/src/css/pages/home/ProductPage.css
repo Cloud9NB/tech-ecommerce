@@ -4,7 +4,7 @@
 
 .product__carousel--image {
   max-width: 100%;
-  max-height: 500px;
+  max-height: 300px;
   object-fit: cover;
 }
 
