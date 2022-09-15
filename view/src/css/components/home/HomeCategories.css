@@ -1,18 +1,32 @@
+.home-category-link__container {
+  cursor: pointer;
+  width: 13rem;
+  margin: 5px;
+}
+
 .category__tile {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
   background-size: cover;
   background-position: center;
   padding: 50px;
   color: white;
   font-size: 30px;
-  cursor: pointer;
   transition: all 0.3s;
-  margin: 5px;
 }
 
 .category__tile:hover {
   transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+  .home-category-link__container {
+    width: 7rem;
+    margin: 2px;
+  }
+
+  .category__tile {
+    font-size: 20px;
+  }
 }
