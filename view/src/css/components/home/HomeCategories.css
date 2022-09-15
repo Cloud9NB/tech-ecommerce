@@ -20,7 +20,8 @@
   transform: scale(1.05);
 }
 
-@media screen and (max-width: 768px) {
+/* Phone size ex. iPhone 13 Pro Max and smaller */
+@media screen and (max-width: 480px) {
   .home-category-link__container {
     width: 7rem;
     margin: 2px;
