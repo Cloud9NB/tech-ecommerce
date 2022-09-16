@@ -8,6 +8,7 @@ import TopNav from './TopNav';
 import ProductPage from '../pages/home/ProductPage';
 import CategoryPage from '../pages/home/CategoryPage';
 import '../css/App.css';
+import NotFound from '../pages/404';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
@@ -24,11 +25,11 @@ const App = () => {
               <Route exact path='/signup' element={<Signup />} />
             </>
           )}
-          <Route path={'/product/:id'} element={<ProductPage />} />
-          <Route path='/new-product' element={<NewProduct />} />
-          <Route path='/category/:category' element={<CategoryPage />} />
+          <Route exact path={'/product/:id'} element={<ProductPage />} />
+          <Route exact path='/new-product' element={<NewProduct />} />
+          <Route exact path='/category/:category' element={<CategoryPage />} />
 
-          <Route path='*' element={<Home />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
