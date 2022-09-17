@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Badge, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { capitalizeCategoryName } from '../../helperFunctions/helperFunctions';
 import axios from 'axios';
 import Loading from '../../components/home/productPage/Loading';
 import SimilarProducts from '../../components/home/productPage/SimilarProducts';
@@ -38,6 +39,7 @@ const ProductPage = () => {
     return <Loading />;
   }
 
+  const categoryName = capitalizeCategoryName(state.product.category);
   const customer = user && !user.isAdmin;
   const admin = user && user.isAdmin;
 
@@ -49,7 +51,7 @@ const ProductPage = () => {
           <h1>{state.product.name}</h1>
           <Link to={`/category/${state.product.category}`}>
             <p>
-              <Badge bg='primary'>{state.product.category}</Badge>
+              <Badge bg='primary'>{categoryName}</Badge>
             </p>
           </Link>
 

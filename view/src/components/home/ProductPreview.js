@@ -1,8 +1,11 @@
 import { Badge, Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { capitalizeCategoryName } from '../../helperFunctions/helperFunctions';
 import '../../css/components/home/ProductPreview.css';
 
 const ProductPreview = ({ _id, name, category, images }) => {
+  const categoryName = capitalizeCategoryName(category);
+
   return (
     <LinkContainer to={`/product/${_id}`} className='product-preview__link'>
       <Card className='product-preview__card'>
@@ -14,7 +17,7 @@ const ProductPreview = ({ _id, name, category, images }) => {
         <Card.Body className='text-center'>
           <Card.Title>{name}</Card.Title>
           <Badge bg='warning' text='dark'>
-            {category}
+            {categoryName}
           </Badge>
         </Card.Body>
       </Card>

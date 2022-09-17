@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { capitalizeCategoryName } from '../../helperFunctions/helperFunctions';
 import axios from 'axios';
 import Loading from '../../components/home/productPage/Loading';
 import Category from '../../components/home/categoryPage/Category';
@@ -31,7 +32,7 @@ const CategoryPage = () => {
     <Loading />;
   }
 
-  const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+  const categoryName = capitalizeCategoryName(category);
 
   const handleChange = e =>
     setState(prev => ({ ...prev, searchTerm: e.target.value }));

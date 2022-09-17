@@ -36,7 +36,7 @@ const NewProduct = () => {
 
     createProduct(product).then(res => {
       if (res.data.length > 0) {
-        setTimeout(() => navigate('/'), 2500);
+        setTimeout(() => navigate('/'), 1600);
       }
     });
   };
@@ -80,12 +80,10 @@ const NewProduct = () => {
         <Col md={6} className='new-product__form--container'>
           <Form onSubmit={handleSubmit} className='login__form'>
             <h1 className='m-4'>Create a new product</h1>
-
             {isSuccess && (
               <Alert variant='success'>Product created with success</Alert>
             )}
             {isError && <Alert variant='danger'>{error.data}</Alert>}
-
             <Form.Group className='mb-3'>
               <Form.Label>Product Name</Form.Label>
               <Form.Control
@@ -97,7 +95,6 @@ const NewProduct = () => {
                 required
               ></Form.Control>
             </Form.Group>
-
             <Form.Group className='mb-3'>
               <Form.Label>Description</Form.Label>
               <Form.Control
@@ -110,9 +107,8 @@ const NewProduct = () => {
                 required
               ></Form.Control>
             </Form.Group>
-
             <Form.Group className='mb-3'>
-              <Form.Label>Price</Form.Label>
+              <Form.Label>Price ($)</Form.Label>
               <Form.Control
                 type='number'
                 name='price'
@@ -124,7 +120,6 @@ const NewProduct = () => {
                 required
               ></Form.Control>
             </Form.Group>
-
             <Form.Group className='mb-3'>
               <Form.Label>Category</Form.Label>
               <Form.Select onChange={handleChange} name='category' required>
@@ -138,7 +133,6 @@ const NewProduct = () => {
                 <option value='laptops'>Laptops</option>
               </Form.Select>
             </Form.Group>
-
             <Form.Group className='mb-3'>
               <Button type='button' onClick={showWidget}>
                 Upload Images

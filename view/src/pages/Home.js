@@ -10,7 +10,7 @@ import '../css/pages/Home.css';
 const Home = () => {
   const dispatch = useDispatch();
   const products = useSelector(({ products }) => products);
-  const lastProducts = products.slice(0, 8);
+  const lastEightProducts = products.slice(-8).reverse();
 
   useEffect(() => {
     axios.get('/products').then(({ data }) => dispatch(updateProducts(data)));
@@ -19,22 +19,22 @@ const Home = () => {
   const categories = [
     {
       id: 1,
-      name: 'technology',
+      name: 'Technology',
       img: 'https://media.istockphoto.com/photos/businessman-using-a-computer-to-document-management-concept-online-picture-id1335050732?b=1&k=20&m=1335050732&s=170667a&w=0&h=ZixERs8xGjy-XF8vYmf60sBwEwE-p3omcoffv8PWMBQ=',
     },
     {
       id: 2,
-      name: 'consoles',
+      name: 'Consoles',
       img: 'https://gmedia.playstation.com/is/image/SIEPDC/playstation-5-horizontal-product-shot-01-ps5-en-29sep21?$native--t$',
     },
     {
       id: 3,
-      name: 'phones',
+      name: 'Phones',
       img: 'https://www.powerplanetonline.com/cdnassets/iphone_13_pro_max_verde_alpino_01_l.jpg',
     },
     {
       id: 4,
-      name: 'laptops',
+      name: 'Laptops',
       img: 'https://techcrunch.com/wp-content/uploads/2022/07/CMC_1580.jpg',
     },
   ];
@@ -43,7 +43,7 @@ const Home = () => {
     <HomeCategories key={id} name={name} img={img} />
   ));
 
-  const featuredProducts = lastProducts.map(product => (
+  const featuredProducts = lastEightProducts.map(product => (
     <ProductPreview key={product._id} {...product} />
   ));
 
