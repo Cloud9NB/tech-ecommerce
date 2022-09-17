@@ -8,6 +8,8 @@ import '../css/components/TopNav.css';
 const TopNav = () => {
   const user = useSelector(({ user }) => user);
   const dispatch = useDispatch();
+  const admin = user && user.isAdmin;
+  const customer = user && !user.isAdmin;
 
   const handleLogout = e => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const TopNav = () => {
   return (
     <Navbar bg='light' expand='lg' sticky='top'>
       <Container>
-        <LinkContainer to=''>
+        <LinkContainer to='/'>
           <Navbar.Brand>Tech Shop</Navbar.Brand>
         </LinkContainer>
 
@@ -30,9 +32,17 @@ const TopNav = () => {
               </LinkContainer>
             )}
 
+            {customer && (
+              <LinkContainer to='/cart'>
+                <Nav.Link>
+                  <i className='fas fa-shopping-cart'></i>
+                </Nav.Link>
+              </LinkContainer>
+            )}
+
             {user && (
               <NavDropdown title={user.email} id='basic-nav-dropdown'>
-                {user.admin ? (
+                {admin ? (
                   <>
                     <NavDropdown.Item href='/dashboard'>
                       Dashboard
