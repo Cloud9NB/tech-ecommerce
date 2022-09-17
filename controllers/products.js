@@ -64,7 +64,7 @@ module.exports = {
     }
   },
 
-  getProductByProductId: async (req, res) => {
+  getSimilarProductByProductId: async (req, res) => {
     const { id } = req.params;
 
     try {

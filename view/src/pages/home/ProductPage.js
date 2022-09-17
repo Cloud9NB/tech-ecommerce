@@ -20,7 +20,7 @@ const ProductPage = () => {
 
   const user = useSelector(({ user }) => user);
   const { id } = useParams();
-  console.log(state.product);
+
   useEffect(() => {
     axios
       .get(`/products/${id}`)

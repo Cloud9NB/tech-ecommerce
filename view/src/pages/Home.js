@@ -43,7 +43,7 @@ const Home = () => {
     <HomeCategories key={id} name={name} img={img} />
   ));
 
-  const productPreview = lastProducts.map(product => (
+  const featuredProducts = lastProducts.map(product => (
     <ProductPreview key={product._id} {...product} />
   ));
 
@@ -53,7 +53,7 @@ const Home = () => {
 
       <div className='featured--products__container container mt-4'>
         <h2>Featured Products</h2>
-        <div className='product-preview__container'>{productPreview}</div>
+        <div className='product-preview__container'>{featuredProducts}</div>
         <div>
           <Link to='/category/all' className='seeMore'>
             See more {'>>'}
