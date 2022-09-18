@@ -10,6 +10,7 @@ const TopNav = () => {
   const dispatch = useDispatch();
   const admin = user && user.isAdmin;
   const customer = user && !user.isAdmin;
+  const hasCart = user.cart.count > 0;
 
   const handleLogout = e => {
     e.preventDefault();
@@ -36,6 +37,11 @@ const TopNav = () => {
               <LinkContainer to='/cart'>
                 <Nav.Link>
                   <i className='fas fa-shopping-cart'></i>
+                  {hasCart && (
+                    <span className='badge badge-warning' id='cartcount'>
+                      {user.cart.count}
+                    </span>
+                  )}
                 </Nav.Link>
               </LinkContainer>
             )}

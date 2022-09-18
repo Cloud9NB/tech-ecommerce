@@ -7,7 +7,6 @@ const CartPage = () => {
     user,
     products,
   }));
-
   const userCartObj = user.cart;
   let cart = products.filter(product => userCartObj[product._id] != null);
   const emptyCart = cart.length === 0;
