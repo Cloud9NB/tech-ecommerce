@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Toast, ToastContainer } from 'react-bootstrap';
+import '../../../css/components/home/AddCartMessage.css';
 
 const AddCartMessage = ({ body }) => {
   const [show, setShow] = useState(true);
