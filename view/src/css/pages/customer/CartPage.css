@@ -1,3 +1,17 @@
 .cart__container {
   min-height: 95vh;
 }
+
+.fa-plus-circle,
+.fa-minus-circle {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.fa-plus-circle {
+  margin-left: 5px;
+}
+
+.fa-minus-circle {
+  margin-right: 5px;
+}
