@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 
-const AddToCart = () => {
+const AddToCart = ({ handleButton }) => {
   return (
     <ButtonGroup style={{ width: '90%' }}>
       <Form.Select size='lg' style={{ width: '40%', borderRadius: '0' }}>
@@ -9,7 +9,9 @@ const AddToCart = () => {
         <option value='3'>3</option>
         <option value='4'>4</option>
       </Form.Select>
-      <Button size='lg'>Add To Cart</Button>
+      <Button size='lg' onClick={handleButton}>
+        Add To Cart
+      </Button>
     </ButtonGroup>
   );
 };

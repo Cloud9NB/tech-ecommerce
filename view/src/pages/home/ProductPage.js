@@ -4,6 +4,7 @@ import { Badge, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { capitalizeCategoryName } from '../../helperFunctions/helperFunctions';
+import { useAddToCartMutation } from '../../services/appApi';
 import axios from 'axios';
 import Loading from '../../components/home/productPage/Loading';
 import SimilarProducts from '../../components/home/productPage/SimilarProducts';
@@ -18,9 +19,18 @@ const ProductPage = () => {
     product: null,
     similar: null,
   });
-
   const user = useSelector(({ user }) => user);
   const { id } = useParams();
+  const [addToCart, { isSuccess }] = useAddToCartMutation();
+
+  const handleButton = () => {
+    addToCart({
+      userId: user._id,
+      productId: id,
+      price: state.product.price,
+      image: state.product.pictures[0].url,
+    });
+  };
 
   useEffect(() => {
     axios
@@ -40,8 +50,8 @@ const ProductPage = () => {
   }
 
   const categoryName = capitalizeCategoryName(state.product.category);
-  const customer = user && !user.isAdmin;
-  const admin = user && user.isAdmin;
+  const isCustomer = user && !user.isAdmin;
+  const isAdmin = user && user.isAdmin;
 
   return (
     <Container className='pt-4 product-page__container'>
@@ -61,9 +71,9 @@ const ProductPage = () => {
             <strong>Description:</strong> {state.product.description}
           </p>
 
-          {customer && <AddToCart />}
+          {isCustomer && <AddToCart handleAddToCart={handleButton} />}
 
-          {admin && <EditProduct product={state.product} />}
+          {isAdmin && <EditProduct product={state.product} />}
         </Col>
       </Row>
 
