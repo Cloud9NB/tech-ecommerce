@@ -13,7 +13,7 @@ import CartPage from '../pages/customer/CartPage';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
-  const customer = user && !user.isAdmin;
+  const isCustomer = user && !user.isAdmin;
 
   return (
     <div>
@@ -31,7 +31,7 @@ const App = () => {
           <Route exact path='/new-product' element={<NewProduct />} />
           <Route exact path='/category/:category' element={<CategoryPage />} />
 
-          {customer && <Route exact path='/cart' element={<CartPage />} />}
+          {isCustomer && <Route exact path='/cart' element={<CartPage />} />}
 
           <Route path='*' element={<NotFound />} />
         </Routes>
