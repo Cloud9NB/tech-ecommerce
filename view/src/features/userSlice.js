@@ -25,6 +25,21 @@ export const userSlice = createSlice({
       appApi.endpoints.addToCart.matchFulfilled,
       (state, { payload }) => payload
     );
+
+    builder.addMatcher(
+      appApi.endpoints.deleteFromCart.matchFulfilled,
+      (state, { payload }) => payload
+    );
+
+    builder.addMatcher(
+      appApi.endpoints.increaseCartCount.matchFulfilled,
+      (state, { payload }) => payload
+    );
+
+    builder.addMatcher(
+      appApi.endpoints.decreaseCartCount.matchFulfilled,
+      (state, { payload }) => payload
+    );
   },
 });
 
