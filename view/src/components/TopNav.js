@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../features/userSlice';
+import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import '../css/components/TopNav.css';
 
@@ -10,11 +11,14 @@ const TopNav = () => {
   const dispatch = useDispatch();
   const isAdmin = user && user.isAdmin;
   const isCustomer = user && !user.isAdmin;
-  const hasCart = user.cart.count > 0;
+  const hasCart = user?.cart.count > 0;
+
+  const navigate = useNavigate();
 
   const handleLogout = e => {
     e.preventDefault();
     dispatch(logout());
+    navigate('/');
   };
 
   return (
@@ -67,7 +71,7 @@ const TopNav = () => {
                 )}
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item href='#action/3.4'>
+                <NavDropdown.Item>
                   <Button
                     variant='danger'
                     className='logout-btn'
