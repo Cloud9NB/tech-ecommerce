@@ -19,7 +19,9 @@ const ProductPage = () => {
   const [state, setState] = useState({
     product: null,
     similar: null,
+    quantity: 1,
   });
+
   const user = useSelector(({ user }) => user);
   const { id } = useParams();
   const [addToCart, { isSuccess }] = useAddToCartMutation();
@@ -28,7 +30,8 @@ const ProductPage = () => {
     addToCart({
       userId: user._id,
       productId: id,
-      price: state.product.price,
+      price: state.product.price * state.quantity,
+      quantity: state.quantity,
     });
   };
 
@@ -71,13 +74,15 @@ const ProductPage = () => {
             <strong>Description:</strong> {state.product.description}
           </p>
 
-          {isCustomer && <AddToCart handleButton={handleButton} />}
+          {isCustomer && (
+            <AddToCart handleButton={handleButton} setState={setState} />
+          )}
 
           {isAdmin && <EditProduct product={state.product} />}
 
           {isSuccess && (
             <AddCartMessage
-              body={`${state.product.name} has been added to your cart`}
+              body={`${state.quantity} ${state.product.name} has been added to your cart`}
             />
           )}
         </Col>

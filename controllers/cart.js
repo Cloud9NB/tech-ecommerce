@@ -2,19 +2,19 @@ const User = require('../models/Users');
 
 module.exports = {
   addToCart: async (req, res) => {
-    const { userId, productId, price } = req.body;
+    const { userId, productId, price, quantity } = req.body;
 
     try {
       const user = await User.findById(userId);
       const userCart = user.cart;
 
       if (user.cart[productId]) {
-        userCart[productId] += 1;
+        userCart[productId] += quantity;
       } else {
-        userCart[productId] = 1;
+        userCart[productId] = quantity;
       }
 
-      userCart.count += 1;
+      userCart.count += quantity;
       userCart.total += Number(price);
       user.cart = userCart;
       user.markModified('cart');
