@@ -8,8 +8,8 @@ import '../css/components/TopNav.css';
 const TopNav = () => {
   const user = useSelector(({ user }) => user);
   const dispatch = useDispatch();
-  const admin = user && user.isAdmin;
-  const customer = user && !user.isAdmin;
+  const isAdmin = user && user.isAdmin;
+  const isCustomer = user && !user.isAdmin;
   const hasCart = user.cart.count > 0;
 
   const handleLogout = e => {
@@ -33,7 +33,7 @@ const TopNav = () => {
               </LinkContainer>
             )}
 
-            {customer && (
+            {isCustomer && (
               <LinkContainer to='/cart'>
                 <Nav.Link>
                   <i className='fas fa-shopping-cart'></i>
@@ -48,7 +48,7 @@ const TopNav = () => {
 
             {user && (
               <NavDropdown title={user.email} id='basic-nav-dropdown'>
-                {admin ? (
+                {isAdmin ? (
                   <>
                     <NavDropdown.Item href='/dashboard'>
                       Dashboard
