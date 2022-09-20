@@ -37,7 +37,7 @@ module.exports = {
       const user = await User.findByCredentials(email, password);
       res.json(user);
     } catch (error) {
-      res.status(404).send(error.message);
+      res.status(404).send('Invalid credentials');
     }
   },
 };
