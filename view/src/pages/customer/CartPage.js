@@ -21,7 +21,12 @@ const CartPage = () => {
   );
 
   const tableBody = cart.map((item, index) => (
-    <TableBody key={index} {...item} quantity={user.cart[item._id]} />
+    <TableBody
+      key={index}
+      {...item}
+      quantity={user.cart[item._id]}
+      user={user}
+    />
   ));
 
   const pst = Math.round(user.cart.total * 0.07 * 100) / 100;
