@@ -34,6 +34,8 @@ const TableBody = ({ images, price, quantity, _id: productId, user }) => {
     }
   };
 
+  const totalPerProduct = (price * quantity).toFixed(2);
+
   return (
     <tr>
       <td>
@@ -65,7 +67,7 @@ const TableBody = ({ images, price, quantity, _id: productId, user }) => {
           <i className={plusClassName} onClick={handleClick}></i>
         </span>
       </td>
-      <td>${price * quantity}</td>
+      <td>${totalPerProduct}</td>
     </tr>
   );
 };

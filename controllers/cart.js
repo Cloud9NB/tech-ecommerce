@@ -15,8 +15,10 @@ module.exports = {
       }
 
       userCart.count += quantity;
-      userCart.total += Number(price);
+      userCart.total += price;
+      userCart.total = Number(userCart.total.toFixed(2));
       user.cart = userCart;
+
       user.markModified('cart');
       await user.save();
       res.status(200).json(user);
@@ -32,10 +34,12 @@ module.exports = {
       const user = await User.findById(userId);
       const userCart = user.cart;
 
-      userCart.total += Number(price);
+      userCart.total += price;
+      userCart.total = Number(userCart.total.toFixed(2));
       userCart.count += 1;
       userCart[productId] += 1;
       user.cart = userCart;
+
       user.markModified('cart');
       await user.save();
       res.status(200).json(user);
@@ -51,10 +55,12 @@ module.exports = {
       const user = await User.findById(userId);
       const userCart = user.cart;
 
-      userCart.total -= Number(price);
+      userCart.total -= price;
+      userCart.total = Number(userCart.total.toFixed(2));
       userCart.count -= 1;
       userCart[productId] -= 1;
       user.cart = userCart;
+
       user.markModified('cart');
       await user.save();
       res.status(200).json(user);
@@ -70,11 +76,12 @@ module.exports = {
       const user = await User.findById(userId);
       const userCart = user.cart;
 
-      userCart.total -= Number(userCart[productId]) * Number(price);
+      userCart.total -= userCart[productId] * price;
+      userCart.total = Number(userCart.total.toFixed(2));
       userCart.count -= userCart[productId];
       delete userCart[productId];
-
       user.cart = userCart;
+
       user.markModified('cart');
       await user.save();
       res.status(200).json(user);

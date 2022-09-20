@@ -31,7 +31,7 @@ const CartPage = () => {
 
   const pst = Math.round(user.cart.total * 0.07 * 100) / 100;
   const gst = Math.round(user.cart.total * 0.05 * 100) / 100;
-  const total = Math.round((user.cart.total + pst + gst) * 100) / 100;
+  const total = user.cart.total + pst + gst;
 
   return (
     <Container className='cart__container'>
