@@ -19,7 +19,7 @@ const ProductPage = () => {
   const [state, setState] = useState({
     product: null,
     similar: null,
-    quantity: 1,
+    quantity: 0,
   });
 
   const user = useSelector(({ user }) => user);
@@ -27,12 +27,15 @@ const ProductPage = () => {
   const [addToCart, { isSuccess }] = useAddToCartMutation();
 
   const handleButton = () => {
-    addToCart({
-      userId: user._id,
-      productId: id,
-      price: state.product.price * state.quantity,
-      quantity: state.quantity,
-    });
+    if (state.quantity > 0) {
+      return addToCart({
+        userId: user._id,
+        productId: id,
+        price: state.product.price * state.quantity,
+        quantity: state.quantity,
+      });
+    }
+    alert('Please choose the amount');
   };
 
   useEffect(() => {
@@ -83,6 +86,7 @@ const ProductPage = () => {
           {isSuccess && (
             <AddCartMessage
               body={`${state.quantity} ${state.product.name} has been added to your cart`}
+              setState={setState}
             />
           )}
         </Col>
