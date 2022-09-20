@@ -4,8 +4,8 @@ import ProductPreview from '../ProductPreview';
 const SimilarProducts = ({ similar, productId }) => {
   const filteredProducts = similar.filter(sim => sim._id !== productId);
 
-  const similarProducts = filteredProducts.map((sim, index) => (
-    <ProductPreview {...sim} key={index} />
+  const similarProducts = filteredProducts.map(sim => (
+    <ProductPreview {...sim} key={sim._id} />
   ));
 
   const responsive = {

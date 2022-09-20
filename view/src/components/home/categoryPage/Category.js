@@ -2,8 +2,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 import ProductPreview from '../ProductPreview';
 
 const Category = ({ productsSearch }) => {
-  const productsByCategory = productsSearch.map((product, index) => (
-    <ProductPreview {...product} key={index} />
+  const productsByCategory = productsSearch.map(product => (
+    <ProductPreview {...product} key={product._id} />
   ));
 
   return (

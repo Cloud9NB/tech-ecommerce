@@ -65,9 +65,9 @@ const NewProduct = () => {
     widget.open();
   };
 
-  const uploadedImages = product.images.map((image, index) => (
+  const uploadedImages = product.images.map(image => (
     <NewProductImages
-      key={index}
+      key={image.public_id}
       image={image}
       setProduct={setProduct}
       images={product.images}

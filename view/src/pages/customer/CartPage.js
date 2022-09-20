@@ -20,9 +20,9 @@ const CartPage = () => {
     <div>Payment here</div>
   );
 
-  const tableBody = cart.map((item, index) => (
+  const tableBody = cart.map(item => (
     <TableBody
-      key={index}
+      key={item._id}
       {...item}
       quantity={user.cart[item._id]}
       user={user}
