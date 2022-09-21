@@ -32,7 +32,7 @@ export const appApi = createApi({
       query: cart => ({
         url: '/cart/add-to-cart',
         body: cart,
-        method: 'POST',
+        method: 'PATCH',
       }),
     }),
 
@@ -40,7 +40,7 @@ export const appApi = createApi({
       query: item => ({
         url: '/cart/remove-from-cart',
         body: item,
-        method: 'POST',
+        method: 'PATCH',
       }),
     }),
 
@@ -48,7 +48,7 @@ export const appApi = createApi({
       query: count => ({
         url: '/cart/increase-cart',
         body: count,
-        method: 'POST',
+        method: 'PATCH',
       }),
     }),
 
@@ -56,7 +56,7 @@ export const appApi = createApi({
       query: count => ({
         url: '/cart/decrease-cart',
         body: count,
-        method: 'POST',
+        method: 'PATCH',
       }),
     }),
   }),

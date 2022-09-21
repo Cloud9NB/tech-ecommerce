@@ -7,9 +7,9 @@ const {
 
 const router = require('express').Router();
 
-router.post('/add-to-cart', addToCart);
-router.post('/remove-from-cart', removeFromCart);
-router.post('/increase-cart', increaseCart);
-router.post('/decrease-cart', decreaseCart);
+router.patch('/add-to-cart', addToCart);
+router.patch('/remove-from-cart', removeFromCart);
+router.patch('/increase-cart', increaseCart);
+router.patch('/decrease-cart', decreaseCart);
 
 module.exports = router;
