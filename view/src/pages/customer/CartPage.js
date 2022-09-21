@@ -1,7 +1,12 @@
 import { Alert, Col, Container, Row, Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import StripePayment from '../../components/home/customer/StripePayment';
 import TableBody from '../../components/home/customer/TableBody';
 import '../../css/pages/customer/CartPage.css';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 const CartPage = () => {
   const { user, products } = useSelector(({ user, products }) => ({
@@ -17,7 +22,9 @@ const CartPage = () => {
       Shopping cart is empty. Add products to your cart.
     </Alert>
   ) : (
-    <div>Payment here</div>
+    <Elements stripe={stripePromise}>
+      <StripePayment />
+    </Elements>
   );
 
   const tableBody = cart.map(item => (
