@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import StripePayment from '../../components/home/customer/StripePayment';
-import TableBody from '../../components/home/customer/TableBody';
+import CartTable from '../../components/home/customer/CartTable';
 import '../../css/pages/customer/CartPage.css';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
@@ -27,8 +27,8 @@ const CartPage = () => {
     </Elements>
   );
 
-  const tableBody = cart.map(item => (
-    <TableBody
+  const cartTable = cart.map(item => (
+    <CartTable
       key={item._id}
       {...item}
       quantity={user.cart[item._id]}
@@ -61,7 +61,7 @@ const CartPage = () => {
                   </tr>
                 </thead>
 
-                <tbody>{tableBody}</tbody>
+                <tbody>{cartTable}</tbody>
               </Table>
               <div>
                 <div>PST ${pst}</div>

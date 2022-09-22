@@ -4,7 +4,7 @@ import {
   useDeleteFromCartMutation,
 } from '../../../services/appApi';
 
-const TableBody = ({ images, price, quantity, _id: productId, user }) => {
+const CartTable = ({ images, price, quantity, _id: productId, user }) => {
   const [increaseCartCount] = useIncreaseCartCountMutation();
   const [decreaseCartCount] = useDecreaseCartCountMutation();
   const [deleteFromCart] = useDeleteFromCartMutation();
@@ -72,4 +72,4 @@ const TableBody = ({ images, price, quantity, _id: productId, user }) => {
   );
 };
 
-export default TableBody;
+export default CartTable;
