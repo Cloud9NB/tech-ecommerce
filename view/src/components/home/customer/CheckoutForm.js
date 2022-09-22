@@ -44,13 +44,22 @@ const StripePayment = () => {
       }
     ).then(res => res.json());
 
-    console.log(client_secret);
+    // console.log(client_secret);
 
-    const { paymentIntent } = await stripe.confirmCardPayment(client_secret, {
-      payment_method: { card: elements.getElement(CardElement) },
-    });
+    const { paymentIntent, error } = await stripe.confirmCardPayment(
+      client_secret,
+      {
+        payment_method: { card: elements.getElement(CardElement) },
+        receipt_email: user.email,
+      }
+    );
 
     console.log(paymentIntent);
+    console.log(error);
+
+    if (error) {
+      setState(prev => ({ ...prev, alertMessage: error.message }));
+    }
 
     setState(prev => ({ ...prev, paying: false }));
 
