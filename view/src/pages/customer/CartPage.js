@@ -2,7 +2,7 @@ import { Alert, Col, Container, Row, Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import StripePayment from '../../components/home/customer/StripePayment';
+import CheckoutForm from '../../components/home/customer/CheckoutForm';
 import CartTable from '../../components/home/customer/CartTable';
 import '../../css/pages/customer/CartPage.css';
 
@@ -23,7 +23,7 @@ const CartPage = () => {
     </Alert>
   ) : (
     <Elements stripe={stripePromise}>
-      <StripePayment />
+      <CheckoutForm />
     </Elements>
   );
 
