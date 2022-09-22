@@ -20,10 +20,12 @@ app.use(express.json());
 const users = require('./routes/userRoutes');
 const products = require('./routes/productRoutes');
 const cart = require('./routes/cartRoutes');
+const payment = require('./routes/paymentRoute');
 
 app.use('/users', users);
 app.use('/products', products);
 app.use('/cart', cart);
+app.use('/payment', payment);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'view/build')));
