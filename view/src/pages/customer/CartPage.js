@@ -15,7 +15,7 @@ const CartPage = () => {
   }));
   const userCartObj = user.cart;
   let cart = products.filter(product => userCartObj[product._id] != null);
-  const emptyCart = cart.length === 0;
+  const emptyCart = cart.length <= 0;
 
   const isEmptyCart = emptyCart ? (
     <Alert variant='info'>
