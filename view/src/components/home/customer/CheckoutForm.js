@@ -24,7 +24,7 @@ const StripePayment = () => {
   const navigate = useNavigate();
   const [createOrder, { isLoading, isError, isSuccess }] =
     useCreateOrderMutation();
-  console.log(isSuccess);
+
   const onSubmit = async e => {
     e.preventDefault();
     if (!stripe || !elements || user.cart.count <= 0) return;
@@ -46,8 +46,6 @@ const StripePayment = () => {
       }
     );
 
-    console.log(paymentIntent);
-
     if (error) {
       setState(prev => ({ ...prev, alertMessage: error.message }));
     }
@@ -55,26 +53,26 @@ const StripePayment = () => {
     setState(prev => ({ ...prev, paying: false }));
 
     if (paymentIntent) {
-      // const order = {
-      //   userId: user._id,
-      //   cart: user.cart,
-      //   address: state.address,
-      //   city: state.city,
-      //   postalCode: state.postalCode,
-      //   country: state.country,
-      //   phoneNumber: state.phoneNumber,
-      // };
+      const order = {
+        userId: user._id,
+        cart: user.cart,
+        address: state.address,
+        city: state.city,
+        postalCode: state.postalCode,
+        country: state.country,
+        phoneNumber: state.phoneNumber,
+      };
 
-      // createOrder({ order }).then(res => {
-      //   if (!isLoading && !isError) {
-      //     setState(prev => ({
-      //       ...prev,
-      //       alertMessage: `Payment ${paymentIntent.status}`,
-      //     }));
+      createOrder({ order }).then(res => {
+        if (!isLoading && !isError) {
+          setState(prev => ({
+            ...prev,
+            alertMessage: `Payment ${paymentIntent.status}`,
+          }));
 
-      setTimeout(() => navigate('/orders'), 2000);
-      // }
-      // });
+          setTimeout(() => navigate('/orders'), 2000);
+        }
+      });
     }
   };
 
@@ -89,10 +87,13 @@ const StripePayment = () => {
         country={state.country}
         phoneNumber={state.phoneNumber}
         city={state.city}
-        isSuccess={isSuccess}
       />
 
-      <StripePayButton user={user} paying={state.paying} />
+      <StripePayButton
+        user={user}
+        paying={state.paying}
+        isSuccess={isSuccess}
+      />
     </Form>
   );
 };
