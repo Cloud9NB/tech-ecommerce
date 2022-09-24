@@ -15,6 +15,7 @@ const CheckoutForm = ({
   postalCode,
   country,
   phoneNumber,
+  city,
 }) => {
   const handleChange = e => {
     setState(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -60,6 +61,20 @@ const CheckoutForm = ({
               placeholder='Address'
               name='address'
               value={address}
+              onChange={handleChange}
+              required
+            ></FormControl>
+          </FormGroup>
+        </Col>
+
+        <Col md={6}>
+          <FormGroup className='mb-3'>
+            <FormLabel>City</FormLabel>
+            <FormControl
+              type='text'
+              placeholder='City'
+              name='city'
+              value={city}
               onChange={handleChange}
               required
             ></FormControl>
