@@ -10,6 +10,7 @@ import CategoryPage from '../pages/home/CategoryPage';
 import '../css/App.css';
 import NotFound from '../pages/404';
 import CartPage from '../pages/customer/CartPage';
+import OrdersPage from '../pages/customer/OrdersPage';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
@@ -31,7 +32,12 @@ const App = () => {
           <Route exact path='/new-product' element={<NewProduct />} />
           <Route exact path='/category/:category' element={<CategoryPage />} />
 
-          {isCustomer && <Route exact path='/cart' element={<CartPage />} />}
+          {isCustomer && (
+            <>
+              <Route exact path='/cart' element={<CartPage />} />
+              <Route exact path='/orders' element={<OrdersPage />} />
+            </>
+          )}
 
           <Route path='*' element={<NotFound />} />
         </Routes>
