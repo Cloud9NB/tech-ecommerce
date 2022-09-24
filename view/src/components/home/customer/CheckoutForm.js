@@ -22,29 +22,21 @@ const StripePayment = () => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
-  const [createOrder, { isLoading, isError }] = useCreateOrderMutation();
-
+  const [createOrder, { isLoading, isError, isSuccess }] =
+    useCreateOrderMutation();
+  console.log(isSuccess);
   const onSubmit = async e => {
     e.preventDefault();
     if (!stripe || !elements || user.cart.count <= 0) return;
-
     setState(prev => ({ ...prev, paying: true }));
 
-    const data = {
-      amount: user.cart.total,
-    };
+    const data = { amount: user.cart.total };
 
-    // my proxy here is not working, idk why
-    const { client_secret } = await fetch(
-      'http://localhost:8001/payment/create-payment',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      }
-    ).then(res => res.json());
-
-    // console.log(client_secret);
+    const { client_secret } = await fetch('/payment/create-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then(res => res.json());
 
     const { paymentIntent, error } = await stripe.confirmCardPayment(
       client_secret,
@@ -55,7 +47,6 @@ const StripePayment = () => {
     );
 
     console.log(paymentIntent);
-    console.log(error);
 
     if (error) {
       setState(prev => ({ ...prev, alertMessage: error.message }));
@@ -63,28 +54,28 @@ const StripePayment = () => {
 
     setState(prev => ({ ...prev, paying: false }));
 
-    // if (paymentIntent) {
-    //   const order = {
-    //     userId: user._id,
-    //     cart: user.cart,
-    //     address: state.address,
-    //     city: state.city,
-    //     postalCode: state.postalCode,
-    //     country: state.country,
-    //     phoneNumber: state.phoneNumber,
-    //   };
+    if (paymentIntent) {
+      // const order = {
+      //   userId: user._id,
+      //   cart: user.cart,
+      //   address: state.address,
+      //   city: state.city,
+      //   postalCode: state.postalCode,
+      //   country: state.country,
+      //   phoneNumber: state.phoneNumber,
+      // };
 
-    // createOrder({ order }).then(res => {
-    //   if (!isLoading && !isError) {
-    //     setState(prev => ({
-    //       ...prev,
-    //       alertMessage: `Payment ${paymentIntent.status}`,
-    //     }));
+      // createOrder({ order }).then(res => {
+      //   if (!isLoading && !isError) {
+      //     setState(prev => ({
+      //       ...prev,
+      //       alertMessage: `Payment ${paymentIntent.status}`,
+      //     }));
 
-    //     setTimeout(() => navigate('/orders'), 2000);
-    //   }
-    // });
-    // }
+      setTimeout(() => navigate('/orders'), 2000);
+      // }
+      // });
+    }
   };
 
   return (
@@ -97,6 +88,8 @@ const StripePayment = () => {
         postalCode={state.postalCode}
         country={state.country}
         phoneNumber={state.phoneNumber}
+        city={state.city}
+        isSuccess={isSuccess}
       />
 
       <StripePayButton user={user} paying={state.paying} />
