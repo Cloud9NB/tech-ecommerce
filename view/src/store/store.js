@@ -3,7 +3,7 @@ import productSlice from '../features/productSlice';
 import userSlice from '../features/userSlice';
 import appApi from '../services/appApi';
 
-//local storage for store
+// local storage for store
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';

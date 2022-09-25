@@ -13,8 +13,6 @@ module.exports = {
 
       res.status(200).json(paymentIntent);
     } catch (error) {
-      console.log('Error~', error.message);
-
       res.status(403).send(error.message);
     }
   },

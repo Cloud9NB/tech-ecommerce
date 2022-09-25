@@ -1,4 +1,3 @@
-// import '../../css/components/'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Container, Table } from 'react-bootstrap';
@@ -14,7 +13,6 @@ const OrdersPage = () => {
     orderToShow: [],
     show: false,
   });
-  console.log(state.orders);
 
   useEffect(() => {
     setState(prev => ({ ...prev, loading: true }));

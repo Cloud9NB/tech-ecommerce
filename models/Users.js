@@ -81,7 +81,7 @@ UserSchema.methods.toJSON = function () {
   return userObject;
 };
 
-//before saving it validates then hashes the password
+// before saving it validates then hashes the password
 UserSchema.pre('save', function (next) {
   const user = this;
   // This regex must contain 1 upper and lower case letter, 1 number, 1 special characters, minimum 8 length

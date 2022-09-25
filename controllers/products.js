@@ -56,8 +56,6 @@ module.exports = {
       const products = await Product.find();
       res.status(200).json(products);
     } catch (error) {
-      console.log('error 5');
-
       res.status(400).json(error.message);
     }
   },
