@@ -1,13 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import appApi from '../services/appApi';
+import appApi from '../services/appApi';
 
 const initialState = [];
 
 export const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    updateProducts: (state, action) => action.payload,
+  reducers: { updateProducts: (_, { payload }) => payload },
+
+  extraReducers: ({ addMatcher }) => {
+    addMatcher(
+      appApi.endpoints.createProduct.matchFulfilled,
+      (_, { payload }) => payload
+    );
+
+    addMatcher(
+      appApi.endpoints.updateProduct.matchFulfilled,
+      (_, { payload }) => payload
+    );
+
+    addMatcher(
+      appApi.endpoints.deleteProduct.matchFulfilled,
+      (_, { payload }) => payload
+    );
   },
 });
 

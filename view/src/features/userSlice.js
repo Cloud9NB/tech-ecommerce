@@ -6,9 +6,7 @@ const initialState = null;
 export const userSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {
-    logout: ({ user }) => (user = initialState),
-  },
+  reducers: { logout: ({ user }) => (user = initialState) },
 
   extraReducers: builder => {
     builder.addMatcher(

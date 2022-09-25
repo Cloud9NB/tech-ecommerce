@@ -4,6 +4,7 @@ export const appApi = createApi({
   reducerPath: 'appApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/' }),
   endpoints: builder => ({
+    // REGISTER / SIGN IN
     signup: builder.mutation({
       query: user => ({
         url: '/users/signup',
@@ -20,6 +21,7 @@ export const appApi = createApi({
       }),
     }),
 
+    // ADMIN
     createProduct: builder.mutation({
       query: product => ({
         url: '/products',
@@ -28,6 +30,23 @@ export const appApi = createApi({
       }),
     }),
 
+    deleteProduct: builder.mutation({
+      query: ({ productId, userId }) => ({
+        url: `/products/${productId}`,
+        body: { userId },
+        method: 'DELETE',
+      }),
+    }),
+
+    updateProduct: builder.mutation({
+      query: product => ({
+        url: `/products/${product._id}}`,
+        body: product,
+        method: 'PATCH',
+      }),
+    }),
+
+    // CUSTOMER
     addToCart: builder.mutation({
       query: cart => ({
         url: '/cart/add-to-cart',
@@ -74,6 +93,8 @@ export const {
   useSignupMutation,
   useLoginMutation,
   useCreateProductMutation,
+  useDeleteProductMutation,
+  useUpdateProductMutation,
   useAddToCartMutation,
   useDeleteFromCartMutation,
   useIncreaseCartCountMutation,

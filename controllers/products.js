@@ -49,12 +49,15 @@ module.exports = {
 
     try {
       const user = await User.findById(userId);
-      if (!user.isAdmin) res.status(401).json("You don't have permission");
 
+      if (!user.isAdmin) res.status(401).json("You don't have permission");
       await Product.findByIdAndDelete(id);
+
       const products = await Product.find();
       res.status(200).json(products);
     } catch (error) {
+      console.log('error 5');
+
       res.status(400).json(error.message);
     }
   },
