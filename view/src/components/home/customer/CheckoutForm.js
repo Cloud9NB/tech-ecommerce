@@ -53,7 +53,7 @@ const StripePayment = () => {
     setState(prev => ({ ...prev, paying: false }));
 
     if (paymentIntent) {
-      const order = {
+      createOrder({
         userId: user._id,
         cart: user.cart,
         address: state.address,
@@ -61,9 +61,7 @@ const StripePayment = () => {
         postalCode: state.postalCode,
         country: state.country,
         phoneNumber: state.phoneNumber,
-      };
-
-      createOrder({ order }).then(res => {
+      }).then(res => {
         if (!isLoading && !isError) {
           setState(prev => ({
             ...prev,
