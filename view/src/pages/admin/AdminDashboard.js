@@ -7,6 +7,7 @@ import {
   Row,
   TabContainer,
   TabContent,
+  TabPane,
 } from 'react-bootstrap';
 import DashboardProducts from '../../components/admin/dashboard/DashboardProducts';
 
@@ -28,9 +29,12 @@ const AdminDashboard = () => {
               </NavItem>
             </Nav>
           </Col>
+
           <Col sm={9}>
-            <TabContent eventKey='products'>
-              <DashboardProducts />
+            <TabContent>
+              <TabPane eventKey='products'>
+                <DashboardProducts />
+              </TabPane>
             </TabContent>
           </Col>
         </Row>
