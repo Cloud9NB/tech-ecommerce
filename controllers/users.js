@@ -40,4 +40,15 @@ module.exports = {
       res.status(404).send('Invalid credentials');
     }
   },
+
+  getUsersOrder: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const user = await User.findById(id).populate('orders');
+      res.json(user.orders);
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  },
 };
