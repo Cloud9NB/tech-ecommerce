@@ -1,18 +1,7 @@
-import { useSelector } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import EditProductButton from '../../home/productPage/EditProductButton';
-import { useDeleteProductMutation } from '../../../services/appApi';
+import DeleteProductButton from '../DeleteProductButton';
 
 const ProductBodyTable = ({ images, _id, name, price }) => {
-  const user = useSelector(({ user }) => user);
-
-  const [deleteProduct, { isLoading }] = useDeleteProductMutation();
-
-  const handleDeleteProduct = e => {
-    if (window.confirm(`Are you sure you want to delete ${name}?`))
-      deleteProduct({ productId: _id, userId: user._id });
-  };
-
   return (
     <tr>
       <td>
@@ -31,9 +20,7 @@ const ProductBodyTable = ({ images, _id, name, price }) => {
       <td>{name}</td>
       <td>${price}</td>
       <td>
-        <Button onClick={handleDeleteProduct} disabled={isLoading}>
-          Delete
-        </Button>
+        <DeleteProductButton productId={_id} productName={name} />
         <EditProductButton productId={_id} />
       </td>
     </tr>
