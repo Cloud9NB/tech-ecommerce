@@ -2,10 +2,10 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const EditProduct = ({ product }) => {
+const EditProduct = ({ productId }) => {
   return (
-    <Link to={`/product/${product._id}/edit`}>
-      <Button size='lg'>Edit Product</Button>
+    <Link to={`/product/${productId}/edit`}>
+      <Button className='btn btn-warning'>Edit</Button>
     </Link>
   );
 };
