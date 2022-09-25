@@ -40,6 +40,10 @@ export const userSlice = createSlice({
       appApi.endpoints.decreaseCartCount.matchFulfilled,
       (state, { payload }) => payload
     );
+    builder.addMatcher(
+      appApi.endpoints.createOrder.matchFulfilled,
+      (state, { payload }) => payload
+    );
   },
 });
 
