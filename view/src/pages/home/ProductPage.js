@@ -81,7 +81,7 @@ const ProductPage = () => {
             <AddToCart handleButton={handleButton} setState={setState} />
           )}
 
-          {isAdmin && <EditProduct product={state.product} />}
+          {isAdmin && <EditProduct productId={state.product._id} />}
 
           {isSuccess && (
             <AddCartMessage
