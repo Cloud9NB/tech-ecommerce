@@ -12,7 +12,11 @@ const DeleteProductButton = ({ productName, productId }) => {
   };
 
   return (
-    <Button onClick={handleDeleteProduct} disabled={isLoading}>
+    <Button
+      onClick={handleDeleteProduct}
+      disabled={isLoading}
+      className='btn btn-danger'
+    >
       Delete
     </Button>
   );

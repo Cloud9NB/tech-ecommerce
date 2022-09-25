@@ -14,6 +14,7 @@ import EditProductButton from '../../components/home/productPage/EditProductButt
 import AddCartMessage from '../../components/home/productPage/AddCartMessage';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../css/pages/home/ProductPage.css';
+import DeleteProductButton from '../../components/admin/DeleteProductButton';
 
 const ProductPage = () => {
   const [state, setState] = useState({
@@ -81,7 +82,15 @@ const ProductPage = () => {
             <AddToCart handleButton={handleButton} setState={setState} />
           )}
 
-          {isAdmin && <EditProductButton productId={state.product._id} />}
+          {isAdmin && (
+            <>
+              <EditProductButton productId={state.product._id} />
+              <DeleteProductButton
+                productName={state.product.name}
+                productId={id}
+              />
+            </>
+          )}
 
           {isSuccess && (
             <AddCartMessage

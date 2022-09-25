@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const EditProductButton = ({ productId }) => {
   return (
     <Link to={`/product/${productId}/edit`}>
-      <Button className='btn btn-warning'>Edit</Button>
+      <Button>Edit</Button>
     </Link>
   );
 };
