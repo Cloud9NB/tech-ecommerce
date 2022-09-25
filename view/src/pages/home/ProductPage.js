@@ -10,7 +10,7 @@ import Loading from '../../components/home/productPage/Loading';
 import SimilarProducts from '../../components/home/productPage/SimilarProducts';
 import ProductImages from '../../components/home/productPage/ProductImages';
 import AddToCart from '../../components/home/productPage/AddToCart';
-import EditProduct from '../../components/home/productPage/EditProduct';
+import EditProductButton from '../../components/home/productPage/EditProductButton';
 import AddCartMessage from '../../components/home/productPage/AddCartMessage';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../css/pages/home/ProductPage.css';
@@ -81,7 +81,7 @@ const ProductPage = () => {
             <AddToCart handleButton={handleButton} setState={setState} />
           )}
 
-          {isAdmin && <EditProduct productId={state.product._id} />}
+          {isAdmin && <EditProductButton productId={state.product._id} />}
 
           {isSuccess && (
             <AddCartMessage

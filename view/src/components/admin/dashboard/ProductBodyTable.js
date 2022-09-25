@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import EditProduct from '../../home/productPage/EditProduct';
+import EditProductButton from '../../home/productPage/EditProductButton';
 import { useDeleteProductMutation } from '../../../services/appApi';
 
 const ProductBodyTable = ({ images, _id, name, price }) => {
@@ -34,7 +34,7 @@ const ProductBodyTable = ({ images, _id, name, price }) => {
         <Button onClick={handleDeleteProduct} disabled={isLoading}>
           Delete
         </Button>
-        <EditProduct productId={_id} />
+        <EditProductButton productId={_id} />
       </td>
     </tr>
   );
