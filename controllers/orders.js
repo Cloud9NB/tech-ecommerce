@@ -32,4 +32,13 @@ module.exports = {
       res.status(400).json(error.message);
     }
   },
+
+  getAllOrders: async (req, res) => {
+    try {
+      const orders = await Order.find().populate('owner', ['email', 'name']);
+      res.status(200).json(orders);
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  },
 };
