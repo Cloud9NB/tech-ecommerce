@@ -3,10 +3,7 @@ import { useSelector } from 'react-redux';
 import ProductBodyTable from './ProductBodyTable';
 
 const DashboardProducts = () => {
-  const { user, products } = useSelector(({ user, products }) => ({
-    user,
-    products,
-  }));
+  const products = useSelector(({ products }) => products);
 
   const productBodyTable = products.map(product => (
     <ProductBodyTable key={product._id} {...product} />

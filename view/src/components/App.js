@@ -25,7 +25,6 @@ const App = () => {
         <Routes>
           <Route index element={<Home />} />
           <Route exact path={'/product/:id'} element={<ProductPage />} />
-          <Route exact path='/new-product' element={<NewProduct />} />
           <Route exact path='/category/:category' element={<CategoryPage />} />
 
           {!user && (
@@ -43,7 +42,10 @@ const App = () => {
           )}
 
           {isAdmin && (
-            <Route exact path='/dashboard' element={<AdminDashboard />} />
+            <>
+              <Route exact path='/new-product' element={<NewProduct />} />
+              <Route exact path='/dashboard' element={<AdminDashboard />} />
+            </>
           )}
 
           <Route path='*' element={<NotFound />} />

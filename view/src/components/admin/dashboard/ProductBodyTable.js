@@ -1,8 +1,17 @@
+import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useDeleteProductMutation } from '../../../services/appApi';
 
 const ProductBodyTable = ({ images, _id, name, price }) => {
-  const handleDeleteProduct = e => {};
+  const user = useSelector(({ user }) => user);
+
+  const [deleteProduct, { isLoading }] = useDeleteProductMutation();
+
+  const handleDeleteProduct = e => {
+    if (window.confirm(`Are you sure you want to delete ${name}?`))
+      deleteProduct({ productId: _id, userId: user._id });
+  };
 
   return (
     <tr>
@@ -22,7 +31,9 @@ const ProductBodyTable = ({ images, _id, name, price }) => {
       <td>{name}</td>
       <td>${price}</td>
       <td>
-        <Button onClick={handleDeleteProduct}>Delete</Button>
+        <Button onClick={handleDeleteProduct} disabled={isLoading}>
+          Delete
+        </Button>
         <Link to={`/product/${_id}/edit`} className='btn btn-warning'>
           Edit
         </Link>
