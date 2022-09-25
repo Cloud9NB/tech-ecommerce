@@ -1,4 +1,4 @@
-import EditProductButton from '../../home/productPage/EditProductButton';
+import EditProductButton from '../../admin/EditProductButton';
 import DeleteProductButton from '../DeleteProductButton';
 
 const ProductBodyTable = ({ images, _id, name, price }) => {

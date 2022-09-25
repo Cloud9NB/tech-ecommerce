@@ -10,11 +10,11 @@ import Loading from '../../components/home/productPage/Loading';
 import SimilarProducts from '../../components/home/productPage/SimilarProducts';
 import ProductImages from '../../components/home/productPage/ProductImages';
 import AddToCart from '../../components/home/productPage/AddToCart';
-import EditProductButton from '../../components/home/productPage/EditProductButton';
+import EditProductButton from '../../components/admin/EditProductButton';
 import AddCartMessage from '../../components/home/productPage/AddCartMessage';
+import DeleteProductButton from '../../components/admin/DeleteProductButton';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../css/pages/home/ProductPage.css';
-import DeleteProductButton from '../../components/admin/DeleteProductButton';
 
 const ProductPage = () => {
   const [state, setState] = useState({
