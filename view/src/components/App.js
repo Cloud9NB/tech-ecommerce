@@ -12,6 +12,7 @@ import NotFound from '../pages/404';
 import CartPage from '../pages/customer/CartPage';
 import OrdersPage from '../pages/customer/OrdersPage';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import EditProductPage from '../pages/admin/EditProductPage';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
@@ -45,6 +46,11 @@ const App = () => {
             <>
               <Route exact path='/new-product' element={<NewProduct />} />
               <Route exact path='/dashboard' element={<AdminDashboard />} />
+              <Route
+                exact
+                path='/product/:id/edit'
+                element={<EditProductPage />}
+              />
             </>
           )}
 
