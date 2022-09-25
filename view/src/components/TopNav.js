@@ -54,19 +54,23 @@ const TopNav = () => {
               <NavDropdown title={user.email} id='basic-nav-dropdown'>
                 {isAdmin ? (
                   <>
-                    <NavDropdown.Item href='/dashboard'>
-                      Dashboard
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href='/new-product'>
-                      Create Product
-                    </NavDropdown.Item>
+                    <LinkContainer to='/dashboard'>
+                      <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to='/new-product'>
+                      <NavDropdown.Item>Create Product</NavDropdown.Item>
+                    </LinkContainer>
                   </>
                 ) : (
                   <>
-                    <NavDropdown.Item href='/cart'>Cart</NavDropdown.Item>
-                    <NavDropdown.Item href='/orders'>
-                      My Orders
-                    </NavDropdown.Item>
+                    <LinkContainer to='/cart'>
+                      <NavDropdown.Item>Cart</NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to='/orders'>
+                      <NavDropdown.Item>My Orders</NavDropdown.Item>
+                    </LinkContainer>
                   </>
                 )}
 

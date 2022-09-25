@@ -11,10 +11,12 @@ import '../css/App.css';
 import NotFound from '../pages/404';
 import CartPage from '../pages/customer/CartPage';
 import OrdersPage from '../pages/customer/OrdersPage';
+import AdminDashboard from '../pages/admin/AdminDashboard';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
   const isCustomer = user && !user.isAdmin;
+  const isAdmin = user && user.isAdmin;
 
   return (
     <div>
@@ -22,21 +24,26 @@ const App = () => {
         <TopNav />
         <Routes>
           <Route index element={<Home />} />
+          <Route exact path={'/product/:id'} element={<ProductPage />} />
+          <Route exact path='/new-product' element={<NewProduct />} />
+          <Route exact path='/category/:category' element={<CategoryPage />} />
+
           {!user && (
             <>
               <Route exact path='/login' element={<Login />} />
               <Route exact path='/signup' element={<Signup />} />
             </>
           )}
-          <Route exact path={'/product/:id'} element={<ProductPage />} />
-          <Route exact path='/new-product' element={<NewProduct />} />
-          <Route exact path='/category/:category' element={<CategoryPage />} />
 
           {isCustomer && (
             <>
               <Route exact path='/cart' element={<CartPage />} />
               <Route exact path='/orders' element={<OrdersPage />} />
             </>
+          )}
+
+          {isAdmin && (
+            <Route exact path='/dashboard' element={<AdminDashboard />} />
           )}
 
           <Route path='*' element={<NotFound />} />
