@@ -1,10 +1,20 @@
 import { Table } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import Loading from '../productPage/Loading';
 import OrderTableBody from './OrderTableBody';
 
 const OrderTable = ({ orders, loading }) => {
+  const user = useSelector(({ user }) => user);
+  const isAdmin = user && user.isAdmin;
+  const isCustomer = user && !user.isAdmin;
+
   const orderTableBody = orders.map(order => (
-    <OrderTableBody key={order._id} {...order} />
+    <OrderTableBody
+      key={order._id}
+      {...order}
+      isAdmin={isAdmin}
+      isCustomer={isCustomer}
+    />
   ));
 
   if (loading) return <Loading />;
@@ -17,6 +27,15 @@ const OrderTable = ({ orders, loading }) => {
       <thead>
         <tr>
           <th>Order ID</th>
+
+          {isAdmin && (
+            <>
+              <th>Quantity</th>
+              <th>Client Name</th>
+              <th>Address</th>
+            </>
+          )}
+
           <th>Status</th>
           <th>Date</th>
           <th>Total</th>
