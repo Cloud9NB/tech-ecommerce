@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Alert, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCreateProductMutation } from '../../../services/appApi';
 import ProductForm from '../../../components/admin/createProduct/ProductForm';
@@ -37,12 +37,15 @@ const NewProduct = () => {
       <Row>
         <Col md={6} className='new-product__form--container'>
           <Form onSubmit={handleSubmit} className='login__form'>
+            <h1 className='m-4'>Create a new product</h1>
+            {isSuccess && (
+              <Alert variant='success'>Product created with success</Alert>
+            )}
+            {isError && <Alert variant='danger'>{error.data}</Alert>}
             <ProductForm
               setState={setState}
               images={state.images}
               isSuccess={isSuccess}
-              isError={isError}
-              error={error}
               name={state.name}
               description={state.description}
               price={state.price}
