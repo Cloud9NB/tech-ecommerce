@@ -12,9 +12,8 @@ const DashboardOrders = () => {
 
   useEffect(() => {
     setState(prev => ({ ...prev, loading: true }));
-    // proxy isnt working again
     axios
-      .get('http://localhost:8001/orders')
+      .get('/orders')
       .then(({ data }) =>
         setState(prev => ({ ...prev, loading: false, orders: data }))
       )
