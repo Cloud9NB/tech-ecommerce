@@ -7,7 +7,7 @@ import { useCreateOrderMutation } from '../../../services/appApi';
 import StripePayButton from './StripePayButton';
 import CheckoutInput from './CheckoutInput';
 
-const StripePayment = () => {
+const CheckoutForm = () => {
   const user = useSelector(({ user }) => user);
   const [state, setState] = useState({
     alertMessage: '',
@@ -96,4 +96,4 @@ const StripePayment = () => {
   );
 };
 
-export default StripePayment;
+export default CheckoutForm;
