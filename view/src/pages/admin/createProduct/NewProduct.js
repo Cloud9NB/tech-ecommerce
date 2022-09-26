@@ -50,7 +50,7 @@ const NewProduct = () => {
               description={state.description}
               price={state.price}
               isLoading={isLoading}
-              text='Create'
+              textAction='Create'
             />
           </Form>
         </Col>
