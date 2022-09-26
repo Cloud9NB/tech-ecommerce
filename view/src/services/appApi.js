@@ -46,6 +46,14 @@ export const appApi = createApi({
       }),
     }),
 
+    updateStatus: builder.mutation({
+      query: ({ _id, ownerId }) => ({
+        url: `/orders/${_id}/mark-shipped`,
+        body: { ownerId },
+        method: 'PATCH',
+      }),
+    }),
+
     // CUSTOMER
     addToCart: builder.mutation({
       query: cart => ({
@@ -95,6 +103,7 @@ export const {
   useCreateProductMutation,
   useDeleteProductMutation,
   useUpdateProductMutation,
+  useUpdateStatusMutation,
   useAddToCartMutation,
   useDeleteFromCartMutation,
   useIncreaseCartCountMutation,

@@ -41,4 +41,21 @@ module.exports = {
       res.status(400).json(error.message);
     }
   },
+
+  updateStatus: async (req, res) => {
+    const { ownerId } = req.body;
+    const { id } = req.params;
+
+    console.log(id);
+    try {
+      const user = await User.findById(ownerId);
+
+      await Order.findByIdAndUpdate(id, { status: 'Shipped' });
+      const orders = await Order.find().populate('owner', ['email', 'name']);
+
+      res.status(200).json(orders);
+    } catch (error) {
+      res.status(400).json(error.message);
+    }
+  },
 };
