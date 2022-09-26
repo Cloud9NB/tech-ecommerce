@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Loading from '../productPage/Loading';
 import OrderTableBody from './OrderTableBody';
 
-const OrderTable = ({ orders, loading }) => {
+const OrderTable = ({ orders, loading, setState }) => {
   const user = useSelector(({ user }) => user);
   const isAdmin = user && user.isAdmin;
   const isCustomer = user && !user.isAdmin;
@@ -14,6 +14,7 @@ const OrderTable = ({ orders, loading }) => {
       {...order}
       isAdmin={isAdmin}
       isCustomer={isCustomer}
+      setState={setState}
     />
   ));
 
@@ -33,6 +34,7 @@ const OrderTable = ({ orders, loading }) => {
               <th>Quantity</th>
               <th>Client Name</th>
               <th>Address</th>
+              <th>View Order</th>
             </>
           )}
 

@@ -23,7 +23,13 @@ const DashboardOrders = () => {
       });
   }, []);
 
-  return <OrderTable orders={state.orders} loading={state.loading} />;
+  return (
+    <OrderTable
+      orders={state.orders}
+      loading={state.loading}
+      setState={setState}
+    />
+  );
 };
 
 export default DashboardOrders;
