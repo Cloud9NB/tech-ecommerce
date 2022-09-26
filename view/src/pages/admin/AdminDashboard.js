@@ -9,6 +9,7 @@ import {
   TabContent,
   TabPane,
 } from 'react-bootstrap';
+import DashboardOrders from '../../components/admin/dashboard/DashboardOrders';
 import DashboardProducts from '../../components/admin/dashboard/DashboardProducts';
 
 const AdminDashboard = () => {
@@ -34,6 +35,9 @@ const AdminDashboard = () => {
             <TabContent>
               <TabPane eventKey='products'>
                 <DashboardProducts />
+              </TabPane>
+              <TabPane eventKey='orders'>
+                <DashboardOrders />
               </TabPane>
             </TabContent>
           </Col>
