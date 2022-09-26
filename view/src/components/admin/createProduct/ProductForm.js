@@ -82,6 +82,7 @@ const ProductForm = ({
       <Form.Group className='mb-3'>
         <Form.Label>Price ($)</Form.Label>
         <Form.Control
+          className='price-input'
           type='number'
           name='price'
           min='0'
