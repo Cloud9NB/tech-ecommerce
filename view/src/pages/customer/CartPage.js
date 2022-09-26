@@ -36,9 +36,8 @@ const CartPage = () => {
     />
   ));
 
-  const pst = Math.round(user.cart.total * 0.07 * 100) / 100;
-  const gst = Math.round(user.cart.total * 0.05 * 100) / 100;
-  const total = Number((user.cart.total + pst + gst).toFixed(2));
+  const pst = ((user.cart.total / 1.12) * 0.07).toFixed(2);
+  const gst = ((user.cart.total / 1.12) * 0.05).toFixed(2);
 
   return (
     <Container className='cart__container'>
@@ -66,7 +65,7 @@ const CartPage = () => {
               <div>
                 <div>PST ${pst}</div>
                 <div>GST ${gst}</div>
-                <h3 className='h4 pt-4'>Total: ${total}</h3>
+                <h3 className='h4 pt-4'>Total: ${user.cart.total}</h3>
               </div>
             </>
           )}
