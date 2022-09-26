@@ -28,6 +28,7 @@ module.exports = {
 
     try {
       const { name, description, price, category, images } = req.body;
+
       await Product.findByIdAndUpdate(id, {
         name,
         description,

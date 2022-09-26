@@ -50,6 +50,7 @@ const NewProduct = () => {
               description={state.description}
               price={state.price}
               isLoading={isLoading}
+              text='Create'
             />
           </Form>
         </Col>

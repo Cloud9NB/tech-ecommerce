@@ -10,6 +10,7 @@ const ProductForm = ({
   price,
   isLoading,
   category,
+  textAction,
 }) => {
   const handleChange = e => {
     setState(prev => {
@@ -118,7 +119,7 @@ const ProductForm = ({
 
       <Form.Group>
         <Button type='submit' disabled={isLoading || isSuccess}>
-          Create Product
+          {textAction} Product
         </Button>
       </Form.Group>
     </>

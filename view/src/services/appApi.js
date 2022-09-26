@@ -40,7 +40,7 @@ export const appApi = createApi({
 
     updateProduct: builder.mutation({
       query: product => ({
-        url: `/products/${product._id}}`,
+        url: `/products/${product._id}`,
         body: product,
         method: 'PATCH',
       }),
