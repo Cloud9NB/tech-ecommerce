@@ -3,7 +3,10 @@ import { useParams } from 'react-router-dom';
 import { Badge, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { capitalizeCategoryName } from '../../helperFunctions/helperFunctions';
+import {
+  capitalizeCategoryName,
+  totalAfterTax,
+} from '../../helperFunctions/helperFunctions';
 import { useAddToCartMutation } from '../../services/appApi';
 import axios from 'axios';
 import Loading from '../../components/home/productPage/Loading';
@@ -28,11 +31,13 @@ const ProductPage = () => {
   const [addToCart, { isSuccess }] = useAddToCartMutation();
 
   const handleButton = () => {
+    const afterTax = totalAfterTax(state.product.price, state.quantity);
+
     if (state.quantity > 0) {
       return addToCart({
         userId: user._id,
         productId: id,
-        price: state.product.price * state.quantity,
+        price: afterTax,
         quantity: state.quantity,
       });
     }
