@@ -1,24 +1,22 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../services/appApi';
 import '../css/pages/Login.css';
 
 const Login = () => {
-  const [account, setAccount] = useState({
-    email: '',
-    password: '',
-  });
-
-  const handleChange = e => {
-    setAccount(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const email = useRef();
+  const password = useRef();
 
   const [login, { error, isError, isLoading }] = useLoginMutation();
-
   const navigate = useNavigate();
 
   const handleSubmit = e => {
+    const account = {
+      email: email.current.value,
+      password: password.current.value,
+    };
+
     e.preventDefault();
     login(account).then(({ data }) => {
       if (data) navigate('/');
@@ -38,8 +36,9 @@ const Login = () => {
                 type='email'
                 name='email'
                 placeholder='Enter Email'
-                value={account.email}
-                onChange={handleChange}
+                ref={email}
+                // value={account.email}
+                // onChange={handleChange}
                 required
               ></Form.Control>
             </Form.Group>
@@ -50,8 +49,9 @@ const Login = () => {
                 type='password'
                 name='password'
                 placeholder='Enter Password'
-                value={account.password}
-                onChange={handleChange}
+                ref={password}
+                // value={account.password}
+                // onChange={handleChange}
                 required
               ></Form.Control>
             </Form.Group>
