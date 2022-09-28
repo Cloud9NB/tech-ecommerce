@@ -5,16 +5,16 @@ import { useLoginMutation } from '../services/appApi';
 import '../css/pages/Login.css';
 
 const Login = () => {
-  const email = useRef();
-  const password = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
   const [login, { error, isError, isLoading }] = useLoginMutation();
   const navigate = useNavigate();
 
   const handleSubmit = e => {
     const account = {
-      email: email.current.value,
-      password: password.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
     };
 
     e.preventDefault();
@@ -36,9 +36,7 @@ const Login = () => {
                 type='email'
                 name='email'
                 placeholder='Enter Email'
-                ref={email}
-                // value={account.email}
-                // onChange={handleChange}
+                ref={emailRef}
                 required
               ></Form.Control>
             </Form.Group>
@@ -49,9 +47,7 @@ const Login = () => {
                 type='password'
                 name='password'
                 placeholder='Enter Password'
-                ref={password}
-                // value={account.password}
-                // onChange={handleChange}
+                ref={passwordRef}
                 required
               ></Form.Control>
             </Form.Group>
