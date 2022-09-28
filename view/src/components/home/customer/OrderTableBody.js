@@ -29,6 +29,7 @@ const OrderTableBody = ({
       .then(({ data }) => setState(prev => ({ ...prev, orders: data })))
       .catch(e => console.log(e));
   };
+
   return (
     <tr>
       <td>{_id}</td>
