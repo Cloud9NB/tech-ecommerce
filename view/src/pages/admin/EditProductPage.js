@@ -53,8 +53,6 @@ const EditProductPage = () => {
               setState={setState}
               images={state.images}
               isSuccess={isSuccess}
-              isError={isError}
-              error={error}
               name={state.name}
               description={state.description}
               price={state.price}
