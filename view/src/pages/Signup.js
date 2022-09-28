@@ -1,26 +1,26 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignupMutation } from '../services/appApi';
 import '../css/pages/Signup.css';
 
 const Signup = () => {
-  const [account, setAccount] = useState({
-    name: '',
-    email: '',
-    password: '',
-    passwordVerify: '',
-  });
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordVerifyRef = useRef();
 
   const [signup, { error, isLoading, isError }] = useSignupMutation();
-
-  const handleChange = e => {
-    setAccount(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
   const navigate = useNavigate();
 
   const handleSubmit = e => {
+    const account = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      passwordVerify: passwordVerifyRef.current.value,
+    };
+
     e.preventDefault();
     signup(account).then(({ data }) => {
       if (data) navigate('/');
@@ -40,8 +40,7 @@ const Signup = () => {
                 type='text'
                 name='name'
                 placeholder='Enter name'
-                value={account.name}
-                onChange={handleChange}
+                ref={nameRef}
                 required
               ></Form.Control>
             </Form.Group>
@@ -52,8 +51,7 @@ const Signup = () => {
                 type='email'
                 name='email'
                 placeholder='Enter Email'
-                value={account.email}
-                onChange={handleChange}
+                ref={emailRef}
                 required
               ></Form.Control>
             </Form.Group>
@@ -64,8 +62,7 @@ const Signup = () => {
                 type='password'
                 name='password'
                 placeholder='Enter Password'
-                value={account.password}
-                onChange={handleChange}
+                ref={passwordRef}
                 required
               ></Form.Control>
             </Form.Group>
@@ -76,8 +73,7 @@ const Signup = () => {
                 type='password'
                 name='passwordVerify'
                 placeholder='Re-Enter Password'
-                value={account.passwordVerify}
-                onChange={handleChange}
+                ref={passwordVerifyRef}
                 required
               ></Form.Control>
             </Form.Group>
