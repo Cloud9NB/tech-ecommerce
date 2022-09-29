@@ -89,6 +89,8 @@ UserSchema.pre('save', function (next) {
 
   if (!user.isModified('password')) return next();
   if (!isNaN(user.name)) throw new Error('Name must not contain any numbers');
+  if (!user.name.includes(' '))
+    throw new Error('Please fill out your full name');
   if (!passwordRegex.test(user.password))
     throw new Error(
       'Password must contain 1 upper and lower case letter, a number, a special character and minimum 8 characters'
