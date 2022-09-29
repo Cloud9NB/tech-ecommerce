@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import OrderTable from '../../home/customer/OrderTable';
+import { Table } from 'react-bootstrap';
+import DashboardOrdersTable from './DashboardOrdersTable';
 
 const DashboardOrders = () => {
   const [state, setState] = useState({
@@ -23,12 +25,33 @@ const DashboardOrders = () => {
       });
   }, []);
 
-  return (
-    <OrderTable
-      orders={state.orders}
-      loading={state.loading}
+  const orderTableBody = state.orders.map(order => (
+    <DashboardOrdersTable
+      key={order._id}
+      {...order}
       setState={setState}
+      show={state.show}
+      orderToShow={state.orderToShow}
     />
+  ));
+
+  return (
+    <Table responsive striped bordered hover>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Quantity</th>
+          <th>Client Name</th>
+          <th>Address</th>
+          <th>View Order</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+
+      <tbody>{orderTableBody}</tbody>
+    </Table>
   );
 };
 
