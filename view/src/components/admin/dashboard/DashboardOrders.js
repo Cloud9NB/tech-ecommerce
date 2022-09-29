@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import OrderTable from '../../home/customer/OrderTable';
 import { Table } from 'react-bootstrap';
+import axios from 'axios';
 import DashboardOrdersTable from './DashboardOrdersTable';
 
 const DashboardOrders = () => {

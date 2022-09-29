@@ -27,13 +27,11 @@ const DashboardOrdersTable = ({
       product => productsObj[product._id]
     );
 
-    console.log(productsByOrderId);
-    console.log(productsObj);
-
     const productsToShow = productsByOrderId.map(product => {
       const productCopy = { ...product };
       productCopy.count = productsObj[product._id];
       delete productCopy.description;
+
       return productCopy;
     });
 
@@ -42,7 +40,6 @@ const DashboardOrdersTable = ({
       show: true,
       orderToShow: productsToShow,
     }));
-    // console.log(productsToShow);
   };
 
   const markShipped = () => {
