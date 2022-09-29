@@ -46,7 +46,6 @@ module.exports = {
     const { ownerId } = req.body;
     const { id } = req.params;
 
-    console.log(id);
     try {
       const user = await User.findById(ownerId);
 
