@@ -1,5 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { io } from 'socket.io-client';
+import { addNotification } from '../features/userSlice';
 import NewProduct from '../pages/admin/createProduct/NewProduct';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
@@ -7,17 +10,33 @@ import Signup from '../pages/Signup';
 import TopNav from './TopNav';
 import ProductPage from '../pages/home/ProductPage';
 import CategoryPage from '../pages/home/CategoryPage';
-import '../css/App.css';
 import NotFound from '../pages/404';
 import CartPage from '../pages/customer/CartPage';
 import OrdersPage from '../pages/customer/OrdersPage';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import EditProductPage from '../pages/admin/EditProductPage';
+import '../css/App.css';
 
 const App = () => {
   const user = useSelector(({ user }) => user);
-  const isCustomer = user && !user.isAdmin;
-  const isAdmin = user && user.isAdmin;
+  const isCustomer = user && !user?.isAdmin;
+  const isAdmin = user && user?.isAdmin;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const socket = io('ws://localhost:8001');
+    socket.off('notification').on('notification', (msgObj, user_id) => {
+      if (user_id === user?._id) {
+        dispatch(addNotification(msgObj));
+      }
+    });
+
+    socket.off('new-order').on('new-order', msgObj => {
+      if (isAdmin) {
+        dispatch(addNotification(msgObj));
+      }
+    });
+  }, [dispatch, isAdmin, user?._id]);
 
   return (
     <div>
