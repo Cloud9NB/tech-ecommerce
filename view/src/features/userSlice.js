@@ -6,7 +6,19 @@ const initialState = null;
 export const userSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: { logout: ({ user }) => (user = initialState) },
+  reducers: {
+    logout: ({ user }) => (user = initialState),
+
+    addNotification: ({ notifications }, { payload }) => {
+      notifications.unshift(payload);
+    },
+
+    resetNotifications: ({ notifications }) => {
+      notifications.forEach(noti => {
+        noti.status = 'read';
+      });
+    },
+  },
 
   extraReducers: builder => {
     builder.addMatcher(
@@ -45,6 +57,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { logout, addNotification, resetNotifications } =
+  userSlice.actions;
 
 export default userSlice.reducer;
