@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCreateProductMutation } from '../../../services/appApi';
 import ProductForm from '../../../components/admin/createProduct/ProductForm';
 import '../../../css/pages/admin/NewProduct.css';
+import ErrorMessage from '../../../components/ErrorMessage';
 
 const NewProduct = () => {
   const [state, setState] = useState({
@@ -38,10 +39,13 @@ const NewProduct = () => {
         <Col md={6} className='new-product__form--container'>
           <Form onSubmit={handleSubmit} className='login__form'>
             <h1 className='m-4'>Create a new product</h1>
+
             {isSuccess && (
               <Alert variant='success'>Product created with success</Alert>
             )}
-            {isError && <Alert variant='danger'>{error.data}</Alert>}
+
+            {isError && <ErrorMessage message={error.data} />}
+
             <ProductForm
               setState={setState}
               images={state.images}

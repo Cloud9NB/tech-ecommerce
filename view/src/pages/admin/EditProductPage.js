@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useUpdateProductMutation } from '../../services/appApi';
 import { useSelector } from 'react-redux';
 import ProductForm from '../../components/admin/createProduct/ProductForm';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const EditProductPage = () => {
   const { id } = useParams();
@@ -44,10 +45,13 @@ const EditProductPage = () => {
       <Row>
         <Col md={6} className='new-product__form--container'>
           <h1 className='m-4'>Edit {product.name}</h1>
+
           {isSuccess && (
             <Alert variant='success'>Product edited with success</Alert>
           )}
-          {isError && <Alert variant='danger'>{error.data}</Alert>}
+
+          {isError && <ErrorMessage message={error.data} />}
+
           <Form onSubmit={handleSubmit} className='login__form'>
             <ProductForm
               setState={setState}

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../services/appApi';
+import ErrorMessage from '../components/ErrorMessage';
 import '../css/pages/Login.css';
 
 const Login = () => {
@@ -35,7 +36,9 @@ const Login = () => {
         <Col md={6} className='login__form--container'>
           <Form onSubmit={handleSubmit} className='login__form'>
             <h1>Login to your account</h1>
-            {isError && <Alert variant='danger'>{error.data}</Alert>}
+
+            {isError && <ErrorMessage message={error.data} />}
+
             <Form.Group className='mb-3'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control

@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignupMutation } from '../services/appApi';
 import Loading from '../components/home/productPage/Loading';
+import ErrorMessage from '../components/ErrorMessage';
 import '../css/pages/Signup.css';
 
 const Signup = () => {
@@ -39,7 +40,9 @@ const Signup = () => {
         <Col md={6} className='signup__form--container'>
           <Form onSubmit={handleSubmit} className='signup__form'>
             <h1>Create an account</h1>
-            {isError && <Alert variant='danger'>{error.data}</Alert>}
+
+            {isError && <ErrorMessage message={error.data} />}
+
             <Form.Group className='mb-3'>
               <Form.Label>Name</Form.Label>
               <Form.Control
