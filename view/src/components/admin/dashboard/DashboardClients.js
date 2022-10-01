@@ -26,7 +26,7 @@ const DashboardClients = () => {
 
   if (state.loading) return <Loading />;
   if (state.users.length === 0)
-    return <h1 className='text-center pt-3'>No orders yet</h1>;
+    return <h1 className='text-center pt-3'>No clients yet</h1>;
 
   const orderTableBody = state.users.map(user => (
     <DashboardClientTableBody key={user._id} {...user} />

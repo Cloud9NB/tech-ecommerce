@@ -43,7 +43,7 @@ const DashboardOrdersTable = ({
   };
 
   const markShipped = () => {
-    updateStatus({ _id, ownerId: owner._id })
+    updateStatus({ _id, ownerId: owner?._id })
       .then(({ data }) => setState(prev => ({ ...prev, orders: data })))
       .catch(e => console.log(e));
   };
@@ -61,7 +61,7 @@ const DashboardOrdersTable = ({
     <tr>
       <td>{_id}</td>
       <td>{count}</td>
-      <td>{owner.name}</td>
+      <td>{owner?.name}</td>
       <td>{fullAddress}</td>
 
       <td>
