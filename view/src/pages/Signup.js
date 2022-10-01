@@ -24,7 +24,7 @@ const Signup = () => {
       ...account,
       email: account.email.toLowerCase(),
     };
-    console.log(lowerCaseEmailAccount);
+
     e.preventDefault();
     signup(lowerCaseEmailAccount).then(({ data }) => {
       if (data) navigate('/');
