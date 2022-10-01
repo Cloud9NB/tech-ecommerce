@@ -65,7 +65,10 @@ const DashboardOrdersTable = ({
       <td>{fullAddress}</td>
 
       <td>
-        <span onClick={() => showOrder(ordersProducts)}>
+        <span
+          onClick={() => showOrder(ordersProducts)}
+          style={{ cursor: 'pointer' }}
+        >
           <i className='fa fa-eye'></i>
         </span>
       </td>
