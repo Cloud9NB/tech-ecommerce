@@ -51,4 +51,23 @@ module.exports = {
       res.status(400).send(error.message);
     }
   },
+
+  updateNotifications: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const user = await User.findById(id);
+
+      user.notifications.forEach(noti => {
+        noti.status = 'read';
+      });
+
+      user.markModified('notifications');
+      await user.save();
+
+      res.status(200).send();
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  },
 };
