@@ -3,6 +3,7 @@ import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSignupMutation } from '../services/appApi';
 import '../css/pages/Signup.css';
+import Loading from '../components/home/productPage/Loading';
 
 const Signup = () => {
   const nameRef = useRef();
@@ -26,6 +27,8 @@ const Signup = () => {
       if (data) navigate('/');
     });
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <Container>
