@@ -1,17 +1,18 @@
 require('dotenv').config();
+require('./db/connection');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8001;
 const path = require('path');
 const cors = require('cors');
-require('./db/connection');
-// const http = require('http');
-// const server = http.createServer(app);
-// const { Server } = require('socket.io');
-// const io = new Server(server, {
-//   cors: '*',
-//   methods: '*',
-// });
+
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require('socket.io');
+const io = new Server(server, {
+  cors: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+});
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -37,4 +38,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(port, () => console.log(`Express listening on port: ${port} 👍`));
+server.listen(port, () => console.log(`Express listening on port: ${port} 👍`));
+
+app.set('socketio', io);
