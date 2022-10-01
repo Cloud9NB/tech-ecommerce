@@ -8,7 +8,7 @@
 }
 
 #cartcount {
-  font-size: 10px;
+  font-size: 13px;
   background-color: red;
   color: white;
   padding: 2px 4px;
@@ -16,4 +16,43 @@
   margin-left: -8px;
   border-radius: 50%;
   margin-top: -5px;
+}
+
+.notifications__container {
+  padding: 20px;
+  max-height: 200px;
+  overflow-y: scroll;
+  border: 1px solid gray;
+  background-color: white;
+  width: 200px;
+  z-index: 99;
+}
+
+.notification-read {
+  background-color: lightblue;
+}
+
+.fa-bell {
+  font-size: 1.5em;
+}
+
+.notification-unread {
+  background-color: lightcoral;
+}
+
+.fas[data-count] {
+  position: relative;
+}
+
+.fas[data-count]:after {
+  font-size: 0.45em;
+  position: absolute;
+  right: 0.75em;
+  top: -0.75em;
+  content: attr(data-count);
+  padding: 0.5em;
+  border-radius: 10em;
+  color: white;
+  background-color: red;
+  text-align: center;
 }
