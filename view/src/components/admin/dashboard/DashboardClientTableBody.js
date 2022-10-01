@@ -1,7 +1,6 @@
 import React from 'react';
 
-const DashboardClientTableBody = ({ _id, name, email, ...rest }) => {
-  console.log(rest);
+const DashboardClientTableBody = ({ _id, name, email }) => {
   return (
     <tr>
       <td>{_id}</td>
