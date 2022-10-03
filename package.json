@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "concurrently \"npm i && npm start\" \"cd view && npm i && npm run build\""
+    "build": "cd view && npm install && npm run build"
   },
   "repository": {
     "type": "git",
