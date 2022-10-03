@@ -24,7 +24,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const socket = io('ws://localhost:8001');
+    const socket = io('/');
     socket.off('notification').on('notification', (msgObj, user_id) => {
       if (user_id === user?._id) {
         dispatch(addNotification(msgObj));
