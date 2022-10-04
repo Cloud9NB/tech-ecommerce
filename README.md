@@ -1,18 +1,29 @@
 # `Tech E-Commerce (Project is still work in progress)`
 
-A full stack MERN E-Commerce app where users can register/login and be able to browse / add to cart products and be able to purchase using Stripe.
+A full stack MERN E-Commerce app where users can register/login and be able to browse / add to cart and be able to purchase using Stripe.
 
-Admins can add / edit products(TBA)
+Admins can add / edit / delete products and view / change the status of the orders.
+
+When an order is placed admins will receive a real time notification. Customers also get a notification when the admin changes the status of their order.
 
 ## `Live Link`
 
-N/A [Tech E-Commerce]
+Click here for a live link --> [Tech E-Commerce](https://mern-tech-ecommerce.adaptable.app)
+
+Admin email: admin@gmail.com
+
+Admin Password: 12!@qwQW
 
 ## `Screenshots`
 
-![Before Login]()
-![Login]()
-![Main Page]()
+![Sign-up](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/signUp.png?raw=true)
+![Main Page](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/mainPage.png?raw=true)
+![All Products](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/allProducts.png?raw=true)
+![Per Category](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/mainPage.png?raw=true)
+![Cart](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/cart.png?raw=true)
+![Customer Orders](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/customerOrders.png?raw=true)
+![Admin Dashboard](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/adminDashboard.png?raw=true)
+![Create Product](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/createProduct.png?raw=true)
 
 ## `Running the project`
 
@@ -51,23 +62,31 @@ In the other terminal, run `cd view && npm install && npm start` to install and 
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "thunk": "^0.0.1"
-  },
+  }
 ```
 
 ### Server Side
 
 ```js
 "dependencies": {
-    "bcrypt": "^5.0.1",
-    "cloudinary": "^1.31.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.2",
-    "express": "^4.18.1",
-    "mongoose": "^6.5.4",
-    "socket.io": "^4.5.1",
-    "stripe": "^10.7.0",
-    "validator": "^13.7.0"
-  }
+  "@reduxjs/toolkit": "^1.8.5",
+  "@stripe/react-stripe-js": "^1.10.0",
+  "@stripe/stripe-js": "^1.36.0",
+  "axios": "^0.27.2",
+  "bootstrap": "^5.2.0",
+  "react": "^18.2.0",
+  "react-alice-carousel": "^2.6.4",
+  "react-bootstrap": "^2.5.0",
+  "react-dom": "^18.2.0",
+  "react-redux": "^8.0.2",
+  "react-router-bootstrap": "^0.26.2",
+  "react-router-dom": "^6.3.0",
+  "react-scripts": "5.0.1",
+  "redux": "^4.2.0",
+  "redux-persist": "^6.0.0",
+  "socket.io-client": "^4.5.2",
+  "thunk": "^0.0.1"
+}
 ```
 
 ## `Database`

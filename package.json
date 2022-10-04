@@ -24,7 +24,6 @@
   "homepage": "https://github.com/Cloud9NB/tech-ecommerce#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "concurrently": "^7.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
