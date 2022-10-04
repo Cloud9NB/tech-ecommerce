@@ -1,4 +1,4 @@
-# `Tech E-Commerce (Project is still work in progress)`
+# `Tech E-Commerce`
 
 A full stack MERN E-Commerce app where users can register/login and be able to browse / add to cart and be able to purchase using Stripe.
 
