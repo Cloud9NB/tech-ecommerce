@@ -16,14 +16,14 @@ Admin Password: 12!@qwQW
 
 ## `Screenshots`
 
-![Sign-up](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/signUp.png?raw=true)
-![Main Page](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/mainPage.png?raw=true)
-![All Products](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/allProducts.png?raw=true)
-![Per Category](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/mainPage.png?raw=true)
-![Cart](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/cart.png?raw=true)
-![Customer Orders](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/customerOrders.png?raw=true)
-![Admin Dashboard](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/adminDashboard.png?raw=true)
-![Create Product](https://github.com/Cloud9NB/tech-ecommerce/blob/main/view/public/docs/screenshots/createProduct.png?raw=true)
+![Sign-up](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/signUp.png?raw=true)
+![Main Page](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/mainPage.png?raw=true)
+![All Products](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/allProducts.png?raw=true)
+![Per Category](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/mainPage.png?raw=true)
+![Cart](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/cart.png?raw=true)
+![Customer Orders](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/customerOrders.png?raw=true)
+![Admin Dashboard](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/adminDashboard.png?raw=true)
+![Create Product](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/createProduct.png?raw=true)
 
 ## `Running the project`
 
