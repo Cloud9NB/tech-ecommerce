@@ -28,7 +28,7 @@ const ProductPage = () => {
 
   const user = useSelector(({ user }) => user);
   const { id } = useParams();
-  const [addToCart, { isSuccess }] = useAddToCartMutation();
+  const [addToCart, { isSuccess, isLoading }] = useAddToCartMutation();
 
   const handleButton = () => {
     const afterTax = totalAfterTax(state.product.price, state.quantity);
@@ -62,8 +62,8 @@ const ProductPage = () => {
   }
 
   const categoryName = capitalizeCategoryName(state.product.category);
-  const isCustomer = user && !user.isAdmin;
-  const isAdmin = user && user.isAdmin;
+  const isAdmin = user?.isAdmin;
+  const isNotLogged = !user ? true : false;
 
   return (
     <Container className='pt-4 product-page__container'>
@@ -83,9 +83,12 @@ const ProductPage = () => {
             <strong>Description:</strong> {state.product.description}
           </p>
 
-          {isCustomer && (
-            <AddToCart handleButton={handleButton} setState={setState} />
-          )}
+          <AddToCart
+            handleButton={handleButton}
+            setState={setState}
+            isNotLogged={isNotLogged}
+            isLoading={isLoading}
+          />
 
           {isAdmin && (
             <>

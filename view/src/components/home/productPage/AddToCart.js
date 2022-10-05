@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, Form } from 'react-bootstrap';
 
-const AddToCart = ({ handleButton, setState }) => {
+const AddToCart = ({ handleButton, setState, isNotLogged, isLoading }) => {
   const handleChange = e =>
     setState(prev => ({ ...prev, quantity: Number(e.target.value) }));
 
@@ -10,6 +10,7 @@ const AddToCart = ({ handleButton, setState }) => {
         style={{ width: '40%', borderRadius: '0' }}
         onChange={handleChange}
         defaultValue='default'
+        disabled={isNotLogged}
       >
         <option value='default' disabled>
           Select amount
@@ -19,7 +20,11 @@ const AddToCart = ({ handleButton, setState }) => {
         <option value='3'>3</option>
         <option value='4'>4</option>
       </Form.Select>
-      <Button size='lg' onClick={handleButton}>
+      <Button
+        size='lg'
+        onClick={handleButton}
+        disabled={isNotLogged || isLoading}
+      >
         Add To Cart
       </Button>
     </ButtonGroup>
