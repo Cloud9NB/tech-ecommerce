@@ -14,6 +14,8 @@ Admin email: admin@gmail.com
 
 Admin Password: 12!@qwQW
 
+Fake Credit Card: `4242424242424242` 04/24 `242` 42424
+
 ## `Screenshots`
 
 ![Sign-up](https://github.com/Cloud9NB/tech-ecommerce/blob/master/view/public/docs/screenshots/signUp.png?raw=true)
