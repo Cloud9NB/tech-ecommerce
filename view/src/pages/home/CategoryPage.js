@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { capitalizeCategoryName } from '../../helperFunctions/helperFunctions';
 import axios from 'axios';
@@ -37,8 +37,12 @@ const CategoryPage = () => {
   const handleChange = e =>
     setState(prev => ({ ...prev, searchTerm: e.target.value }));
 
-  const productsSearch = state.products.filter(product =>
-    product.name.toLowerCase().includes(state.searchTerm.toLowerCase())
+  const productsSearch = useMemo(
+    () =>
+      state.products.filter(product =>
+        product.name.toLowerCase().includes(state.searchTerm.toLowerCase())
+      ),
+    [state.products, state.searchTerm]
   );
 
   const noProducts = productsSearch.length === 0;
